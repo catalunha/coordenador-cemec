@@ -4,50 +4,79 @@ import 'package:coordenador/firestore/firestore_model.dart';
 
 class UserModel extends FirestoreModel {
   static final String collection = 'users';
-  String? info;
+  final String? displayName;
+  final String email;
+  final String? phoneNumber;
+  final String? photoURL;
 
   UserModel(
     String id, {
-    this.info,
+    this.displayName,
+    required this.email,
+    this.phoneNumber,
+    this.photoURL,
   }) : super(id);
 
   UserModel copyWith({
-    String? info,
+    String? displayName,
+    String? email,
+    String? phoneNumber,
+    String? photoURL,
   }) {
     return UserModel(
-      this.id,
-      info: info ?? this.info,
+      id,
+      displayName: displayName ?? this.displayName,
+      email: email ?? this.email,
+      phoneNumber: phoneNumber ?? this.phoneNumber,
+      photoURL: photoURL ?? this.photoURL,
     );
-  }
-
-  Map<String, dynamic> toMap() {
-    return {
-      'info': info,
-    };
   }
 
   factory UserModel.fromMap(String id, Map<String, dynamic> map) {
     return UserModel(
       id,
-      info: map['info'],
+      displayName: map['displayName'],
+      email: map['email'],
+      phoneNumber: map['phoneNumber'],
+      photoURL: map['photoURL'],
     );
   }
-
-  String toJson() => json.encode(toMap());
 
   factory UserModel.fromJson(String id, String source) =>
       UserModel.fromMap(id, json.decode(source));
 
+  Map<String, dynamic> toMap() {
+    return {
+      'displayName': displayName,
+      'email': email,
+      'phoneNumber': phoneNumber,
+      'photoURL': photoURL,
+    };
+  }
+
+  String toJson() => json.encode(toMap());
+
   @override
-  String toString() => 'UserModel(info: $info)';
+  String toString() {
+    return 'UserModel(displayName: $displayName, email: $email, phoneNumber: $phoneNumber, photoURL: $photoURL)';
+  }
 
   @override
   bool operator ==(Object other) {
     if (identical(this, other)) return true;
 
-    return other is UserModel && other.info == info;
+    return other is UserModel &&
+        other.displayName == displayName &&
+        other.email == email &&
+        other.phoneNumber == phoneNumber &&
+        other.photoURL == photoURL;
   }
 
   @override
-  int get hashCode => info.hashCode;
+  int get hashCode {
+    return displayName.hashCode ^
+        email.hashCode ^
+        phoneNumber.hashCode ^
+        photoURL.hashCode;
+  }
 }

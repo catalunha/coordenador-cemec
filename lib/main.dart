@@ -24,13 +24,14 @@ class MyApp extends StatelessWidget {
     return StoreProvider<AppState>(
       store: store,
       child: MaterialApp(
-        title: 'cemec coordenador',
+        title: 'CEMEC Coordenador',
         theme: ThemeData(
           primaryColor: AppColors.primary,
           primarySwatch: Colors.orange,
         ),
         navigatorKey: navigatorKey,
         routes: Routes.routes,
+        // onGenerateRoute: ,
         initialRoute: '/',
       ),
     );

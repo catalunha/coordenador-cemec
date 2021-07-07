@@ -1,4 +1,5 @@
 import 'package:async_redux/async_redux.dart';
+import 'package:coordenador/course/course_state.dart';
 import 'package:coordenador/login/login_state.dart';
 import 'package:coordenador/upload/upload_state.dart';
 import 'package:coordenador/user/user_state.dart';
@@ -8,11 +9,13 @@ class AppState {
   final LoginState loginState;
   final UserState userState;
   final UploadState uploadState;
+  final CourseState courseState;
   AppState({
     required this.wait,
     required this.loginState,
     required this.userState,
     required this.uploadState,
+    required this.courseState,
   });
 
   static AppState initialState() => AppState(
@@ -20,18 +23,21 @@ class AppState {
         loginState: LoginState.initialState(),
         userState: UserState.initialState(),
         uploadState: UploadState.initialState(),
+        courseState: CourseState.initialState(),
       );
   AppState copyWith({
     Wait? wait,
     LoginState? loginState,
     UserState? userState,
     UploadState? uploadState,
+    CourseState? courseState,
   }) {
     return AppState(
       wait: wait ?? this.wait,
       loginState: loginState ?? this.loginState,
       userState: userState ?? this.userState,
       uploadState: uploadState ?? this.uploadState,
+      courseState: courseState ?? this.courseState,
     );
   }
 
@@ -40,6 +46,7 @@ class AppState {
     if (identical(this, other)) return true;
 
     return other is AppState &&
+        other.courseState == courseState &&
         other.uploadState == uploadState &&
         other.loginState == loginState &&
         other.userState == userState &&
@@ -48,7 +55,8 @@ class AppState {
 
   @override
   int get hashCode {
-    return uploadState.hashCode ^
+    return courseState.hashCode ^
+        uploadState.hashCode ^
         loginState.hashCode ^
         userState.hashCode ^
         wait.hashCode;
