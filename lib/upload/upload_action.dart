@@ -16,6 +16,15 @@ class RestartingStateUploadAction extends ReduxAction<AppState> {
   }
 }
 
+class SetUrlForDownloadUploadAction extends ReduxAction<AppState> {
+  final String url;
+  SetUrlForDownloadUploadAction({required this.url});
+  AppState reduce() {
+    return state.copyWith(
+        uploadState: state.uploadState.copyWith(urlForDownload: url));
+  }
+}
+
 class SelectFileUploadAction extends ReduxAction<AppState> {
   @override
   Future<AppState?> reduce() async {
@@ -35,11 +44,14 @@ class SelectFileUploadAction extends ReduxAction<AppState> {
 }
 
 class UploadingFileUploadAction extends ReduxAction<AppState> {
+  final String pathInFirestore;
+
+  UploadingFileUploadAction({required this.pathInFirestore});
   Future<AppState> reduce() async {
     UploadForFirebase uploadForFirebase = UploadForFirebase();
     File? file = state.uploadState.selectedLocalFile;
     if (file != null) {
-      UploadTask? task = uploadForFirebase.uploadingFile(file, 'files2');
+      UploadTask? task = uploadForFirebase.uploadingFile(file, pathInFirestore);
       return state.copyWith(
           uploadState: state.uploadState.copyWith(uploadTask: task));
     } else {

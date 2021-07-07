@@ -2,6 +2,7 @@ import 'package:async_redux/async_redux.dart';
 import 'package:coordenador/app_state.dart';
 import 'package:coordenador/course/course_action.dart';
 import 'package:coordenador/course/course_addedit_page.dart';
+import 'package:coordenador/upload/upload_action.dart';
 import 'package:flutter/cupertino.dart';
 
 import 'package:coordenador/course/course_model.dart';
@@ -14,8 +15,15 @@ class CourseAddEditConnector extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return StoreConnector<AppState, CourseAddEditViewModel>(
-      onInit: (store) =>
-          store.dispatch(SetCourseCurrentCourseAction(id: addOrEditId)),
+      onInit: (store) {
+        store.dispatch(RestartingStateUploadAction());
+        store.dispatch(SetCourseCurrentCourseAction(id: addOrEditId));
+        if (addOrEditId.isNotEmpty &&
+            store.state.courseState.courseModelCurrent!.iconUrl != null) {
+          store.dispatch(SetUrlForDownloadUploadAction(
+              url: store.state.courseState.courseModelCurrent!.iconUrl!));
+        }
+      },
       onDispose: (store) => store.dispatch(ReadDocsCourseAction()),
       vm: () => CourseAddEditFactory(this),
       builder: (context, vm) => CourseAddEditPage(
@@ -37,6 +45,11 @@ class CourseAddEditFactory extends VmFactory<AppState, CourseAddEditConnector> {
           print(courseModel);
           courseModel = courseModel.copyWith(
               coordinatorUserId: state.userState.userCurrent!.id);
+          if (state.uploadState.urlForDownload != null &&
+              state.uploadState.urlForDownload!.isNotEmpty) {
+            courseModel =
+                courseModel.copyWith(iconUrl: state.uploadState.urlForDownload);
+          }
           print(courseModel);
           if (widget!.addOrEditId.isEmpty) {
             dispatch(CreateDocCourseAction(courseModel: courseModel));
