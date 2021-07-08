@@ -26,4 +26,5 @@ samples, guidance on mobile development, and a full API reference.
 <!-- Initialize Firebase -->
 <script src="/__/firebase/init.js"></script>
 https://developers.google.com/identity/sign-in/web/sign-in
+
 firebase deploy --only hosting:coordenador-cemec
