@@ -5,7 +5,7 @@ import 'package:coordenador/course/course_addedit_page.dart';
 import 'package:coordenador/upload/upload_action.dart';
 import 'package:flutter/cupertino.dart';
 
-import 'package:coordenador/course/course_model.dart';
+import 'package:coordenador/module/module_model.dart';
 
 class CourseAddEditConnector extends StatelessWidget {
   final String addOrEditId;

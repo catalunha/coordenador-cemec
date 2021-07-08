@@ -1,36 +1,35 @@
-import 'package:coordenador/course/course_addedit_connector.dart';
-import 'package:coordenador/module/module_model.dart';
+import 'package:coordenador/module/module_addedit_connector.dart';
+import 'package:coordenador/course/course_model.dart';
 import 'package:coordenador/widget/input_description.dart';
-import 'package:coordenador/widget/input_file_connector.dart';
 import 'package:coordenador/widget/input_title.dart';
 import 'package:flutter/material.dart';
 
-class CourseAddEditPage extends StatefulWidget {
+class ModuleAddEditPage extends StatefulWidget {
   final FormController formController;
-  final Function(CourseModel) onSave;
+  final Function(ModuleModel) onSave;
 
-  const CourseAddEditPage({
+  const ModuleAddEditPage({
     Key? key,
     required this.formController,
     required this.onSave,
   }) : super(key: key);
 
   @override
-  _CourseAddEditPageState createState() =>
-      _CourseAddEditPageState(formController);
+  _ModuleAddEditPageState createState() =>
+      _ModuleAddEditPageState(formController);
 }
 
-class _CourseAddEditPageState extends State<CourseAddEditPage> {
+class _ModuleAddEditPageState extends State<ModuleAddEditPage> {
   final FormController formController;
 
-  _CourseAddEditPageState(this.formController);
+  _ModuleAddEditPageState(this.formController);
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text(formController.courseModel.id.isEmpty
-            ? 'Adicionar curso'
-            : 'Edit curso'),
+        title: Text(formController.moduleModel.id.isEmpty
+            ? 'Adicionar môdulo'
+            : 'Edit môdulo'),
       ),
       body: SingleChildScrollView(
         child: Form(
@@ -38,8 +37,8 @@ class _CourseAddEditPageState extends State<CourseAddEditPage> {
             child: Column(
               children: [
                 InputTitle(
-                  label: 'Título do curso',
-                  initialValue: formController.courseModel.title,
+                  label: 'Título do môdulo',
+                  initialValue: formController.moduleModel.title,
                   validator: formController.validateRequiredText,
                   // icon: Icons.text_format,
                   onChanged: (value) {
@@ -47,8 +46,8 @@ class _CourseAddEditPageState extends State<CourseAddEditPage> {
                   },
                 ),
                 InputDescription(
-                  label: 'Descrição do curso',
-                  initialValue: formController.courseModel.description,
+                  label: 'Descrição do môdulo',
+                  initialValue: formController.moduleModel.description,
                   validator: formController.validateRequiredText,
                   // icon: Icons.text_snippet_outlined,
                   onChanged: (value) {
@@ -56,16 +55,13 @@ class _CourseAddEditPageState extends State<CourseAddEditPage> {
                   },
                 ),
                 InputDescription(
-                  label: 'Ementa do curso',
-                  initialValue: formController.courseModel.syllabus,
+                  label: 'Ementa do môdulo',
+                  initialValue: formController.moduleModel.syllabus,
                   validator: formController.validateRequiredText,
                   // icon: Icons.text_snippet_outlined,
                   onChanged: (value) {
                     formController.onChange(syllabus: value);
                   },
-                ),
-                InputFileConnector(
-                  label: 'Informe o ícone do curso',
                 ),
               ],
             )),
@@ -75,7 +71,7 @@ class _CourseAddEditPageState extends State<CourseAddEditPage> {
         onPressed: () {
           formController.onCkechValidation();
           if (formController.isFormValid) {
-            widget.onSave(formController.courseModel);
+            widget.onSave(formController.moduleModel);
             Navigator.pop(context);
           }
         },

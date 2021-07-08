@@ -1,4 +1,4 @@
-import 'package:coordenador/course/course_model.dart';
+import 'package:coordenador/module/module_model.dart';
 import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 
@@ -17,21 +17,22 @@ class CourseCard extends StatelessWidget {
           ListTile(
             leading: courseModel.iconUrl == null
                 ? Icon(Icons.favorite_outline_rounded)
-                : CircleAvatar(
-                    // radius: 20,
-                    child: Image.network(courseModel.iconUrl!.toString()),
+                // : CircleAvatar(
+                //     // radius: 20,
+                //     child: Image.network(courseModel.iconUrl!.toString()),
+                //     backgroundColor: Colors.black26,
+                //   ),
+                : Container(
+                    height: 48,
+                    width: 48,
+                    decoration: BoxDecoration(
+                      color: Colors.black26,
+                      borderRadius: BorderRadius.circular(5),
+                      image: DecorationImage(
+                        image: NetworkImage(courseModel.iconUrl!),
+                      ),
+                    ),
                   ),
-            // : Container(
-            //     height: 48,
-            //     width: 48,
-            //     decoration: BoxDecoration(
-            //       color: Colors.black,
-            //       borderRadius: BorderRadius.circular(5),
-            //       image: DecorationImage(
-            //         image: NetworkImage(courseModel.iconUrl!),
-            //       ),
-            //     ),
-            //   ),
             title: Text(courseModel.title),
             subtitle: Text(courseModel.description),
           ),
@@ -57,7 +58,8 @@ class CourseCard extends StatelessWidget {
               IconButton(
                 icon: Icon(Icons.post_add_outlined),
                 onPressed: () async {
-                  Navigator.pushNamed(context, '/module');
+                  Navigator.pushNamed(context, '/module',
+                      arguments: courseModel.id);
                 },
               ),
             ],

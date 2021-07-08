@@ -1,5 +1,5 @@
 import 'package:coordenador/course/course_card.dart';
-import 'package:coordenador/course/course_model.dart';
+import 'package:coordenador/module/module_model.dart';
 import 'package:coordenador/theme/app_colors.dart';
 import 'package:coordenador/theme/app_text_styles.dart';
 import 'package:flutter/material.dart';
@@ -52,7 +52,7 @@ class HomePage extends StatelessWidget {
                       height: 48,
                       width: 48,
                       decoration: BoxDecoration(
-                        color: Colors.black,
+                        // color: Colors.black,
                         borderRadius: BorderRadius.circular(5),
                         image: DecorationImage(
                           image: NetworkImage(photoUrl),

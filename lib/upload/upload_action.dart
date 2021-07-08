@@ -159,8 +159,8 @@ class UploadForFirebase {
     final path = pickFile!.files.single.path!;
 
     file = File(path);
-    this.fileName = basename(file!.path);
     this.fileBytes = file!.readAsBytesSync();
+    this.fileName = basename(file!.path);
     print('$fileName');
     print('$fileBytes');
   }

@@ -1,7 +1,7 @@
 import 'package:async_redux/async_redux.dart';
 import 'package:coordenador/app_state.dart';
 import 'package:coordenador/course/course_action.dart';
-import 'package:coordenador/course/course_model.dart';
+import 'package:coordenador/module/module_model.dart';
 import 'package:coordenador/course/course_state.dart';
 import 'package:coordenador/home/home_page.dart';
 import 'package:coordenador/login/login_action.dart';
