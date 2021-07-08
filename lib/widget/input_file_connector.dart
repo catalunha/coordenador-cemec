@@ -30,14 +30,11 @@ class InputFileFactory extends VmFactory<AppState, InputFileConnector> {
   @override
   InputFileViewModel fromStore() => InputFileViewModel(
         selectLocalFile: () {
-          dispatch(SelectFileUploadAction2());
+          dispatch(SelectFileUploadAction());
         },
-        // selectedLocalFileName: state.uploadState.selectedLocalFile != null
-        //     ? basename(state.uploadState.selectedLocalFile!.path)
-        //     : '',
         selectedLocalFileName: state.uploadState.fileName ?? '',
         uploadingFile: () async {
-          await dispatch(UploadingFileUploadAction2(
+          await dispatch(UploadingFileUploadAction(
               pathInFirestore: state.userState.userCurrent!.id));
         },
         percentageOfUpload: state.uploadState.uploadPercentage ?? 0.0,
