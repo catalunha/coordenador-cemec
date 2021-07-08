@@ -1,14 +1,19 @@
 import 'dart:io';
+import 'dart:typed_data';
 
 import 'package:firebase_storage/firebase_storage.dart';
 
 class UploadState {
   final File? selectedLocalFile;
+  final String? fileName;
+  final Uint8List? fileBytes;
   final UploadTask? uploadTask;
   final double? uploadPercentage;
   final String? urlForDownload;
   UploadState({
     required this.selectedLocalFile,
+    required this.fileName,
+    required this.fileBytes,
     required this.uploadTask,
     required this.uploadPercentage,
     required this.urlForDownload,
@@ -18,15 +23,21 @@ class UploadState {
         uploadTask: null,
         uploadPercentage: 0.0,
         urlForDownload: null,
+        fileBytes: null,
+        fileName: null,
       );
   UploadState copyWith({
     File? selectedLocalFile,
+    String? fileName,
+    Uint8List? fileBytes,
     UploadTask? uploadTask,
     double? uploadPercentage,
     String? urlForDownload,
   }) {
     return UploadState(
       selectedLocalFile: selectedLocalFile ?? this.selectedLocalFile,
+      fileName: fileName ?? this.fileName,
+      fileBytes: fileBytes ?? this.fileBytes,
       uploadTask: uploadTask ?? this.uploadTask,
       uploadPercentage: uploadPercentage ?? this.uploadPercentage,
       urlForDownload: urlForDownload ?? this.urlForDownload,
@@ -40,12 +51,16 @@ class UploadState {
     return other is UploadState &&
         other.urlForDownload == urlForDownload &&
         other.uploadPercentage == uploadPercentage &&
+        other.fileName == fileName &&
+        other.fileBytes == fileBytes &&
         other.selectedLocalFile == selectedLocalFile &&
         other.uploadTask == uploadTask;
   }
 
   @override
   int get hashCode =>
+      fileName.hashCode ^
+      fileBytes.hashCode ^
       urlForDownload.hashCode ^
       selectedLocalFile.hashCode ^
       uploadTask.hashCode ^

@@ -17,17 +17,21 @@ class CourseCard extends StatelessWidget {
           ListTile(
             leading: courseModel.iconUrl == null
                 ? Icon(Icons.favorite_outline_rounded)
-                : Container(
-                    height: 48,
-                    width: 48,
-                    decoration: BoxDecoration(
-                      color: Colors.black,
-                      borderRadius: BorderRadius.circular(5),
-                      image: DecorationImage(
-                        image: NetworkImage(courseModel.iconUrl!),
-                      ),
-                    ),
+                : CircleAvatar(
+                    // radius: 20,
+                    child: Image.network(courseModel.iconUrl!.toString()),
                   ),
+            // : Container(
+            //     height: 48,
+            //     width: 48,
+            //     decoration: BoxDecoration(
+            //       color: Colors.black,
+            //       borderRadius: BorderRadius.circular(5),
+            //       image: DecorationImage(
+            //         image: NetworkImage(courseModel.iconUrl!),
+            //       ),
+            //     ),
+            //   ),
             title: Text(courseModel.title),
             subtitle: Text(courseModel.description),
           ),
