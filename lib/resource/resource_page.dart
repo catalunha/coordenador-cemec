@@ -2,6 +2,7 @@ import 'package:coordenador/course/course_model.dart';
 import 'package:coordenador/module/module_model.dart';
 import 'package:coordenador/resource/resource_card.dart';
 import 'package:coordenador/resource/resource_model.dart';
+import 'package:coordenador/theme/app_text_styles.dart';
 import 'package:coordenador/user/user_model.dart';
 import 'package:flutter/material.dart';
 
@@ -23,32 +24,68 @@ class ResourcePage extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text('Recursos'),
+        title: Text('Recursos deste curso e môdulo'),
       ),
       body: Column(
         children: [
-          Card(
-            elevation: 10,
-            child: Column(
-              children: [
-                ListTile(
-                  leading: courseModel.iconUrl == null
-                      ? Icon(Icons.favorite_outline_rounded)
-                      : CircleAvatar(
-                          // radius: 20,
-                          child: Image.network(courseModel.iconUrl!.toString()),
-                          backgroundColor: Colors.transparent,
-                        ),
-                  title: Text(courseModel.title),
-                  tileColor: Colors.green,
-                ),
-              ],
-            ),
-          ),
-          Card(
+          Padding(
+            padding: const EdgeInsets.only(left: 8, top: 4, right: 8),
+            child: Card(
+              shape: RoundedRectangleBorder(
+                  borderRadius: BorderRadius.circular(15)),
+              color: Colors.lightBlue,
               elevation: 10,
               child: Column(
                 children: [
+                  Padding(
+                    padding: const EdgeInsets.only(left: 10.0),
+                    child: Align(
+                      alignment: Alignment.topLeft,
+                      child: Text(
+                        'Curso:',
+                      ),
+                    ),
+                  ),
+                  ListTile(
+                    leading: courseModel.iconUrl == null
+                        ? Icon(Icons.favorite_outline_rounded)
+                        : CircleAvatar(
+                            // radius: 20,
+                            child:
+                                Image.network(courseModel.iconUrl!.toString()),
+                            backgroundColor: Colors.transparent,
+                          ),
+                    title: Text(
+                      courseModel.title,
+                      style: AppTextStyles.titleBoldHeading,
+                    ),
+                  ),
+                ],
+              ),
+            ),
+          ),
+          Padding(
+            padding: const EdgeInsets.only(left: 16, top: 4, right: 16),
+            child: Card(
+              shape: RoundedRectangleBorder(
+                  borderRadius: BorderRadius.circular(15)),
+              elevation: 10,
+              color: Colors.lightBlueAccent,
+              child: Column(
+                children: [
+                  Padding(
+                    padding: const EdgeInsets.only(left: 10.0),
+                    child: Align(
+                      alignment: Alignment.topLeft,
+                      child: Text(
+                        'Môdulo:',
+                      ),
+                    ),
+                  ),
+                  Text(
+                    moduleModel.title,
+                    style: AppTextStyles.titleBoldHeading,
+                  ),
                   teacher != null
                       ? ListTile(
                           leading: teacher == null ||
@@ -61,18 +98,16 @@ class ResourcePage extends StatelessWidget {
                                       teacher!.photoURL.toString()),
                                   backgroundColor: Colors.transparent,
                                 ),
-                          title: Text(moduleModel.title),
+                          title: Text('${teacher!.displayName}'),
                           subtitle: Text(
-                              'Nome: ${teacher!.displayName}\nemail: ${teacher!.email}\nMobile:${teacher!.phoneNumber}'),
-                          tileColor: Colors.cyan,
+                              'email: ${teacher!.email}\nMobile:${teacher!.phoneNumber}'),
+                          // tileColor: Colors.cyan,
                         )
-                      : ListTile(
-                          leading: Icon(Icons.favorite_outline_rounded),
-                          title: Text(moduleModel.title),
-                          tileColor: Colors.cyan,
-                        ),
+                      : Container(),
                 ],
-              )),
+              ),
+            ),
+          ),
           Expanded(
             child: SingleChildScrollView(
               child: Column(

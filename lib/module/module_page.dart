@@ -18,26 +18,33 @@ class ModulePage extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text('Módulos'),
+        title: Text('Módulos deste curso'),
       ),
       body: Column(
         children: [
-          Card(
-            elevation: 20,
-            child: Column(
-              children: [
-                ListTile(
-                  leading: courseModel.iconUrl == null
-                      ? Icon(Icons.favorite_outline_rounded)
-                      : CircleAvatar(
-                          // radius: 20,
-                          child: Image.network(courseModel.iconUrl!.toString()),
-                          backgroundColor: Colors.transparent,
-                        ),
-                  title: Text(courseModel.title),
-                  tileColor: Colors.green,
-                ),
-              ],
+          Padding(
+            padding: const EdgeInsets.only(left: 8, top: 4, right: 8),
+            child: Card(
+              shape: RoundedRectangleBorder(
+                  borderRadius: BorderRadius.circular(15)),
+              elevation: 10,
+              color: Colors.lightBlue,
+              child: Column(
+                children: [
+                  ListTile(
+                    leading: courseModel.iconUrl == null
+                        ? Icon(Icons.favorite_outline_rounded)
+                        : CircleAvatar(
+                            // radius: 20,
+                            child:
+                                Image.network(courseModel.iconUrl!.toString()),
+                            backgroundColor: Colors.transparent,
+                          ),
+                    title: Text(courseModel.title),
+                    // tileColor: Colors.green,
+                  ),
+                ],
+              ),
             ),
           ),
           Expanded(

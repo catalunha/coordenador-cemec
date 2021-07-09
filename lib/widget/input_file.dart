@@ -34,7 +34,7 @@ class InputFile extends StatelessWidget {
           ),
           ListTile(
             leading: Icon(Icons.cloud_upload_outlined),
-            title: Text('2º Envie para a núvel'),
+            title: Text('2º Envie para a núvem'),
             subtitle:
                 urlForDownload.isNotEmpty ? Text('Envio finalizado') : Text(''),
             onTap: uploadingFile,
