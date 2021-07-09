@@ -1,5 +1,5 @@
 import 'package:coordenador/course/course_addedit_connector.dart';
-import 'package:coordenador/module/module_model.dart';
+import 'package:coordenador/course/course_model.dart';
 import 'package:coordenador/widget/input_description.dart';
 import 'package:coordenador/widget/input_file_connector.dart';
 import 'package:coordenador/widget/input_title.dart';

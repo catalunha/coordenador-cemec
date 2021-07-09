@@ -1,5 +1,5 @@
 import 'package:coordenador/app_state.dart';
-import 'package:coordenador/module/module_model.dart';
+import 'package:coordenador/course/course_model.dart';
 import 'package:flutter/foundation.dart';
 
 class CourseState {

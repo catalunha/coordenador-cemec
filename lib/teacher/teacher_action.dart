@@ -1,6 +1,7 @@
 import 'package:async_redux/async_redux.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:coordenador/app_state.dart';
+import 'package:coordenador/teacher/teacher_state.dart';
 import 'package:coordenador/user/user_model.dart';
 
 class ReadDocsTeacherAction extends ReduxAction<AppState> {
@@ -54,5 +55,12 @@ class SetTeacherCurrentTeacherAction extends ReduxAction<AppState> {
         ),
       );
     }
+  }
+}
+
+class RestartingStateTeacherAction extends ReduxAction<AppState> {
+  RestartingStateTeacherAction();
+  AppState reduce() {
+    return state.copyWith(teacherState: state.teacherState.copyWith());
   }
 }

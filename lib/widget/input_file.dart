@@ -41,17 +41,18 @@ class InputFile extends StatelessWidget {
             trailing: Text('${percentageOfUpload.toStringAsFixed(2)}'),
           ),
           ListTile(
-              leading: Icon(Icons.link),
-              title: Text('3º Confira o arquivo em núvem'),
-              subtitle: Text(urlForDownload),
-              onTap: () async {
-                if (urlForDownload.isNotEmpty) {
-                  bool can = await canLaunch(urlForDownload);
-                  if (can) {
-                    await launch(urlForDownload);
-                  }
+            leading: Icon(Icons.link),
+            title: Text('3º Confira o arquivo em núvem'),
+            subtitle: Text(urlForDownload),
+            onTap: () async {
+              if (urlForDownload.isNotEmpty) {
+                bool can = await canLaunch(urlForDownload);
+                if (can) {
+                  await launch(urlForDownload);
                 }
-              }),
+              }
+            },
+          ),
           Divider(
             height: 1,
             thickness: 1,

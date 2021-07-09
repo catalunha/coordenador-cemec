@@ -1,12 +1,12 @@
 import 'package:async_redux/async_redux.dart';
-import 'package:coordenador/module/module_model.dart';
+import 'package:coordenador/course/course_model.dart';
 import 'package:coordenador/teacher/teacher_action.dart';
 import 'package:flutter/material.dart';
 
 import 'package:coordenador/app_state.dart';
 import 'package:coordenador/course/course_action.dart';
 import 'package:coordenador/module/module_action.dart';
-import 'package:coordenador/course/course_model.dart';
+import 'package:coordenador/module/module_model.dart';
 import 'package:coordenador/module/module_page.dart';
 
 class ModuleConnector extends StatelessWidget {
@@ -21,13 +21,13 @@ class ModuleConnector extends StatelessWidget {
     return StoreConnector<AppState, ModuleViewModel>(
       onInit: (store) {
         store.dispatch(SetCourseCurrentCourseAction(id: courseId));
-        // store.dispatch(ReadDocsModuleAction());
+        store.dispatch(ReadDocsModuleAction());
         store.dispatch(ReadDocsTeacherAction());
       },
       vm: () => ModuleFactory(this),
       builder: (context, vm) => ModulePage(
         courseModel: vm.courseModel,
-        moduleModelList: [],
+        moduleModelList: vm.moduleModelList,
       ),
     );
   }
@@ -37,7 +37,7 @@ class ModuleFactory extends VmFactory<AppState, ModuleConnector> {
   ModuleFactory(widget) : super(widget);
   ModuleViewModel fromStore() => ModuleViewModel(
         courseModel: state.courseState.courseModelCurrent!,
-        moduleModelList: [],
+        moduleModelList: state.moduleState.moduleModelList!,
       );
 }
 

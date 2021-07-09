@@ -1,6 +1,7 @@
-import 'package:coordenador/module/module_model.dart';
-import 'package:coordenador/module/module_card.dart';
 import 'package:coordenador/course/course_model.dart';
+import 'package:coordenador/module/module_card.dart';
+import 'package:coordenador/module/module_card_connector.dart';
+import 'package:coordenador/module/module_model.dart';
 import 'package:flutter/material.dart';
 
 class ModulePage extends StatelessWidget {
@@ -21,22 +22,31 @@ class ModulePage extends StatelessWidget {
       ),
       body: Column(
         children: [
-          ListTile(
-            leading: courseModel.iconUrl == null
-                ? Icon(Icons.favorite_outline_rounded)
-                : CircleAvatar(
-                    // radius: 20,
-                    child: Image.network(courseModel.iconUrl!.toString()),
-                    backgroundColor: Colors.transparent,
-                  ),
-            title: Text(courseModel.title),
-            tileColor: Colors.green,
-          ),
-          SingleChildScrollView(
+          Card(
+            elevation: 20,
             child: Column(
-              children: moduleModelList
-                  .map((e) => ModuleCard(moduleModel: e))
-                  .toList(),
+              children: [
+                ListTile(
+                  leading: courseModel.iconUrl == null
+                      ? Icon(Icons.favorite_outline_rounded)
+                      : CircleAvatar(
+                          // radius: 20,
+                          child: Image.network(courseModel.iconUrl!.toString()),
+                          backgroundColor: Colors.transparent,
+                        ),
+                  title: Text(courseModel.title),
+                  tileColor: Colors.green,
+                ),
+              ],
+            ),
+          ),
+          Expanded(
+            child: SingleChildScrollView(
+              child: Column(
+                children: moduleModelList
+                    .map((e) => ModuleCardConnector(moduleModel: e))
+                    .toList(),
+              ),
             ),
           ),
         ],

@@ -27,4 +27,7 @@ samples, guidance on mobile development, and a full API reference.
 <script src="/__/firebase/init.js"></script>
 https://developers.google.com/identity/sign-in/web/sign-in
 
+# cmds
+catalunha@pop-os:~/myflutterapps/coordenador$ flutter run -d chrome --web-renderer html --web-hostname localhost --web-port 7357
+catalunha@pop-os:~/myflutterapps/coordenador$ flutter build web --web-renderer html
 firebase deploy --only hosting:coordenador-cemec

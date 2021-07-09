@@ -1,15 +1,17 @@
 import 'package:async_redux/async_redux.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:coordenador/app_state.dart';
-import 'package:coordenador/course/course_model.dart';
+import 'package:coordenador/module/module_model.dart';
 
 class ReadDocsModuleAction extends ReduxAction<AppState> {
   @override
   Future<AppState?> reduce() async {
+    print('--> ReadDocsModuleAction');
     FirebaseFirestore firebaseFirestore = FirebaseFirestore.instance;
     QuerySnapshot<Map<String, dynamic>> querySnapshot =
         await firebaseFirestore.collection(ModuleModel.collection).get();
-    List<ModuleModel> moduleModelList = querySnapshot.docs
+    List<ModuleModel> moduleModelList = [];
+    moduleModelList = querySnapshot.docs
         .map(
           (queryDocumentSnapshot) => ModuleModel.fromMap(
             queryDocumentSnapshot.id,
@@ -47,11 +49,10 @@ class SetModuleCurrentModuleAction extends ReduxAction<AppState> {
     ModuleModel moduleModel = ModuleModel(
       '',
       courseId: '',
-      description: '',
-      isArchivedByProf: false,
-      syllabus: '',
-      teacherUserId: '',
       title: '',
+      description: '',
+      syllabus: '',
+      isArchivedByProf: false,
     );
     if (id.isNotEmpty) {
       moduleModel = state.moduleState.moduleModelList!

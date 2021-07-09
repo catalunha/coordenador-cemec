@@ -2,6 +2,7 @@ import 'package:async_redux/async_redux.dart';
 import 'package:coordenador/course/course_state.dart';
 import 'package:coordenador/login/login_state.dart';
 import 'package:coordenador/module/module_state.dart';
+import 'package:coordenador/resource/resource_state.dart';
 import 'package:coordenador/upload/upload_state.dart';
 import 'package:coordenador/teacher/teacher_state.dart';
 import 'package:coordenador/user/user_state.dart';
@@ -14,6 +15,7 @@ class AppState {
   final UploadState uploadState;
   final CourseState courseState;
   final ModuleState moduleState;
+  final ResourceState resourceState;
   AppState({
     required this.wait,
     required this.loginState,
@@ -22,6 +24,7 @@ class AppState {
     required this.uploadState,
     required this.courseState,
     required this.moduleState,
+    required this.resourceState,
   });
 
   static AppState initialState() => AppState(
@@ -32,6 +35,7 @@ class AppState {
         uploadState: UploadState.initialState(),
         courseState: CourseState.initialState(),
         moduleState: ModuleState.initialState(),
+        resourceState: ResourceState.initialState(),
       );
   AppState copyWith({
     Wait? wait,
@@ -41,6 +45,7 @@ class AppState {
     UploadState? uploadState,
     CourseState? courseState,
     ModuleState? moduleState,
+    ResourceState? resourceState,
   }) {
     return AppState(
       wait: wait ?? this.wait,
@@ -50,6 +55,7 @@ class AppState {
       uploadState: uploadState ?? this.uploadState,
       courseState: courseState ?? this.courseState,
       moduleState: moduleState ?? this.moduleState,
+      resourceState: resourceState ?? this.resourceState,
     );
   }
 
@@ -64,6 +70,7 @@ class AppState {
         other.loginState == loginState &&
         other.teacherState == teacherState &&
         other.userState == userState &&
+        other.resourceState == resourceState &&
         other.wait == wait;
   }
 
@@ -75,6 +82,7 @@ class AppState {
         loginState.hashCode ^
         userState.hashCode ^
         teacherState.hashCode ^
+        resourceState.hashCode ^
         wait.hashCode;
   }
 }

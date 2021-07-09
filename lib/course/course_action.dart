@@ -2,7 +2,7 @@ import 'package:async_redux/async_redux.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 
 import 'package:coordenador/app_state.dart';
-import 'package:coordenador/module/module_model.dart';
+import 'package:coordenador/course/course_model.dart';
 
 class SetCourseCurrentCourseAction extends ReduxAction<AppState> {
   final String id;

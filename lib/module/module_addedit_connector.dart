@@ -2,7 +2,8 @@ import 'package:async_redux/async_redux.dart';
 import 'package:coordenador/app_state.dart';
 import 'package:coordenador/module/module_action.dart';
 import 'package:coordenador/module/module_addedit.page.dart';
-import 'package:coordenador/course/course_model.dart';
+import 'package:coordenador/module/module_model.dart';
+import 'package:coordenador/teacher/teacher_action.dart';
 import 'package:flutter/material.dart';
 
 class ModuleAddEditConnector extends StatelessWidget {
@@ -15,8 +16,14 @@ class ModuleAddEditConnector extends StatelessWidget {
     return StoreConnector<AppState, ModuleAddEditViewModel>(
       onInit: (store) {
         store.dispatch(SetModuleCurrentModuleAction(id: addOrEditId));
+        store.dispatch(RestartingStateTeacherAction());
+        if (addOrEditId.isNotEmpty &&
+            store.state.moduleState.moduleModelCurrent!.teacherUserId != null) {
+          store.dispatch(SetTeacherCurrentTeacherAction(
+              id: store.state.moduleState.moduleModelCurrent!.teacherUserId!));
+        }
       },
-      // onDispose: (store) => store.dispatch(ReadDocsModuleAction()),
+      onDispose: (store) => store.dispatch(ReadDocsModuleAction()),
       vm: () => ModuleAddEditFactory(this),
       builder: (context, vm) => ModuleAddEditPage(
         formController: vm.formController,
@@ -34,6 +41,8 @@ class ModuleAddEditFactory extends VmFactory<AppState, ModuleAddEditConnector> {
             FormController(moduleModel: state.moduleState.moduleModelCurrent!),
         onSave: (ModuleModel moduleModel) {
           print(moduleModel);
+          moduleModel = moduleModel.copyWith(
+              courseId: state.courseState.courseModelCurrent!.id);
           if (state.teacherState.teacherCurrent != null) {
             print(state.teacherState.teacherCurrent!.id);
             moduleModel = moduleModel.copyWith(

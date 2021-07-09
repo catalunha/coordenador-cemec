@@ -5,9 +5,9 @@ import 'package:flutter/foundation.dart';
 class TeacherState {
   final UserModel? teacherCurrent;
   final List<UserModel>? teacherList;
-  static UserModel selectTeacher(AppState state, String teacherId) =>
+  static UserModel? selectTeacher(AppState state, String teacherId) =>
       state.teacherState.teacherList!
-          .firstWhere((element) => element.id == teacherId);
+          .firstWhere((element) => element.id == teacherId, orElse: null);
   TeacherState({
     this.teacherCurrent,
     this.teacherList,
@@ -16,12 +16,16 @@ class TeacherState {
         teacherCurrent: null,
         teacherList: [],
       );
+  // TeacherState resetTeacherCurrent() => TeacherState(
+  //       teacherCurrent: null,
+  //       teacherList: this.teacherList,
+  //     );
   TeacherState copyWith({
     UserModel? teacherCurrent,
     List<UserModel>? teacherList,
   }) {
     return TeacherState(
-      teacherCurrent: teacherCurrent ?? this.teacherCurrent,
+      teacherCurrent: teacherCurrent, // ?? this.teacherCurrent,
       teacherList: teacherList ?? this.teacherList,
     );
   }

@@ -4,116 +4,106 @@ import 'package:flutter/foundation.dart';
 
 import 'package:coordenador/firestore/firestore_model.dart';
 
-class CourseModel extends FirestoreModel {
+class ModuleModel extends FirestoreModel {
   static final String collection = 'modules';
 
-  final String coordinatorUserId; // User.id
+  final String courseId;
   final String title;
   final String description;
   final String syllabus;
-  final bool isArchivedByAdm; //for adm use
-  final bool isArchivedByCoord; //for coord use
-
-  final String? iconUrl;
-  final List<String>? moduleOrder;
-  CourseModel(
+  final bool isArchivedByProf; //for prof use
+  final String? teacherUserId; // User.id
+  final List<String>? resourceOrder;
+  ModuleModel(
     String id, {
-    required this.coordinatorUserId,
+    required this.courseId,
     required this.title,
     required this.description,
     required this.syllabus,
-    this.iconUrl,
-    required this.isArchivedByAdm,
-    required this.isArchivedByCoord,
-    this.moduleOrder,
+    required this.isArchivedByProf,
+    this.teacherUserId,
+    this.resourceOrder,
   }) : super(id);
 
-  CourseModel copyWith({
-    String? coordinatorUserId,
+  ModuleModel copyWith({
+    String? courseId,
     String? title,
     String? description,
     String? syllabus,
-    String? iconUrl,
-    bool? isArchivedByAdm,
-    bool? isArchivedByCoord,
-    List<String>? moduleOrder,
+    bool? isArchivedByProf,
+    String? teacherUserId,
+    List<String>? resourceOrder,
   }) {
-    return CourseModel(
+    return ModuleModel(
       this.id,
-      coordinatorUserId: coordinatorUserId ?? this.coordinatorUserId,
+      courseId: courseId ?? this.courseId,
       title: title ?? this.title,
       description: description ?? this.description,
       syllabus: syllabus ?? this.syllabus,
-      iconUrl: iconUrl ?? this.iconUrl,
-      isArchivedByAdm: isArchivedByAdm ?? this.isArchivedByAdm,
-      isArchivedByCoord: isArchivedByCoord ?? this.isArchivedByCoord,
-      moduleOrder: moduleOrder ?? this.moduleOrder,
+      teacherUserId: teacherUserId ?? this.teacherUserId,
+      isArchivedByProf: isArchivedByProf ?? this.isArchivedByProf,
+      resourceOrder: resourceOrder ?? this.resourceOrder,
     );
   }
 
-  Map<String, dynamic> toMap() {
-    return {
-      'coordinatorUserId': coordinatorUserId,
-      'title': title,
-      'description': description,
-      'syllabus': syllabus,
-      'iconUrl': iconUrl,
-      'isArchivedByAdm': isArchivedByAdm,
-      'isArchivedByCoord': isArchivedByCoord,
-      'moduleOrder': moduleOrder,
-    };
-  }
-
-  factory CourseModel.fromMap(String id, Map<String, dynamic> map) {
-    return CourseModel(
+  factory ModuleModel.fromMap(String id, Map<String, dynamic> map) {
+    return ModuleModel(
       id,
-      coordinatorUserId: map['coordinatorUserId'],
+      courseId: map['courseId'],
       title: map['title'],
       description: map['description'],
       syllabus: map['syllabus'],
-      iconUrl: map['iconUrl'],
-      isArchivedByAdm: map['isArchivedByAdm'],
-      isArchivedByCoord: map['isArchivedByCoord'],
-      moduleOrder: map['moduleOrder'] == null
+      teacherUserId: map['teacherUserId'],
+      isArchivedByProf: map['isArchivedByProf'],
+      resourceOrder: map['resourceOrder'] == null
           ? []
-          : List<String>.from(map['moduleOrder']),
+          : List<String>.from(map['resourceOrder']),
     );
+  }
+  factory ModuleModel.fromJson(String id, String source) =>
+      ModuleModel.fromMap(id, json.decode(source));
+
+  Map<String, dynamic> toMap() {
+    return {
+      'courseId': courseId,
+      'title': title,
+      'description': description,
+      'syllabus': syllabus,
+      'teacherUserId': teacherUserId,
+      'isArchivedByProf': isArchivedByProf,
+      'resourceOrder': resourceOrder,
+    };
   }
 
   String toJson() => json.encode(toMap());
 
-  factory CourseModel.fromJson(String id, String source) =>
-      CourseModel.fromMap(id, json.decode(source));
-
   @override
   String toString() {
-    return 'CourseModel(coordinatorUserId: $coordinatorUserId, title: $title, description: $description, syllabus: $syllabus, iconUrl: $iconUrl, isArchivedByAdm: $isArchivedByAdm, isArchivedByCoord: $isArchivedByCoord, moduleOrder: $moduleOrder)';
+    return 'ModuleModel(courseId: $courseId, title: $title, description: $description, syllabus: $syllabus, teacherUserId: $teacherUserId, isArchivedByProf: $isArchivedByProf, resourceOrder: $resourceOrder)';
   }
 
   @override
   bool operator ==(Object other) {
     if (identical(this, other)) return true;
 
-    return other is CourseModel &&
-        other.coordinatorUserId == coordinatorUserId &&
+    return other is ModuleModel &&
+        other.courseId == courseId &&
         other.title == title &&
         other.description == description &&
         other.syllabus == syllabus &&
-        other.iconUrl == iconUrl &&
-        other.isArchivedByAdm == isArchivedByAdm &&
-        other.isArchivedByCoord == isArchivedByCoord &&
-        listEquals(other.moduleOrder, moduleOrder);
+        other.teacherUserId == teacherUserId &&
+        other.isArchivedByProf == isArchivedByProf &&
+        listEquals(other.resourceOrder, resourceOrder);
   }
 
   @override
   int get hashCode {
-    return coordinatorUserId.hashCode ^
+    return courseId.hashCode ^
         title.hashCode ^
         description.hashCode ^
         syllabus.hashCode ^
-        iconUrl.hashCode ^
-        isArchivedByAdm.hashCode ^
-        isArchivedByCoord.hashCode ^
-        moduleOrder.hashCode;
+        teacherUserId.hashCode ^
+        isArchivedByProf.hashCode ^
+        resourceOrder.hashCode;
   }
 }

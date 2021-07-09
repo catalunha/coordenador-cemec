@@ -1,6 +1,7 @@
 import 'package:coordenador/course/course_addedit_connector.dart';
 import 'package:coordenador/module/module_addedit_connector.dart';
 import 'package:coordenador/module/module_connector.dart';
+import 'package:coordenador/resource/resource_connector.dart';
 import 'package:flutter/material.dart';
 import 'package:coordenador/home/home_page_connector.dart';
 import 'package:coordenador/login/login_connector.dart';
@@ -19,6 +20,9 @@ class Routes {
         ),
     '/module_addedit': (BuildContext context) => ModuleAddEditConnector(
           addOrEditId: ModalRoute.of(context)!.settings.arguments.toString(),
+        ),
+    '/resource': (BuildContext context) => ResourceConnector(
+          moduleId: ModalRoute.of(context)!.settings.arguments.toString(),
         ),
   };
   // static onGenerateRoute(RouteSettings settings) {
