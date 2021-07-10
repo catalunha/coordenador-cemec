@@ -12,6 +12,7 @@ class ModuleModel extends FirestoreModel {
   final String description;
   final String syllabus;
   final bool isArchivedByProf; //for prof use
+  final bool isDeleted; //for prof use
   final String? teacherUserId; // User.id
   final List<String>? resourceOrder;
   ModuleModel(
@@ -21,6 +22,7 @@ class ModuleModel extends FirestoreModel {
     required this.description,
     required this.syllabus,
     required this.isArchivedByProf,
+    required this.isDeleted,
     this.teacherUserId,
     this.resourceOrder,
   }) : super(id);
@@ -31,6 +33,7 @@ class ModuleModel extends FirestoreModel {
     String? description,
     String? syllabus,
     bool? isArchivedByProf,
+    bool? isDeleted,
     String? teacherUserId = '',
     bool teacherUserIdNull = false,
     List<String>? resourceOrder,
@@ -42,6 +45,7 @@ class ModuleModel extends FirestoreModel {
       description: description ?? this.description,
       syllabus: syllabus ?? this.syllabus,
       isArchivedByProf: isArchivedByProf ?? this.isArchivedByProf,
+      isDeleted: isDeleted ?? this.isDeleted,
       teacherUserId:
           teacherUserIdNull ? null : teacherUserId ?? this.teacherUserId,
       resourceOrder: resourceOrder ?? this.resourceOrder,
@@ -57,6 +61,7 @@ class ModuleModel extends FirestoreModel {
       syllabus: map['syllabus'],
       teacherUserId: map['teacherUserId'],
       isArchivedByProf: map['isArchivedByProf'],
+      isDeleted: map['isDeleted'] ?? false,
       resourceOrder: map['resourceOrder'] == null
           ? []
           : List<String>.from(map['resourceOrder']),
@@ -73,6 +78,7 @@ class ModuleModel extends FirestoreModel {
       'syllabus': syllabus,
       'teacherUserId': teacherUserId,
       'isArchivedByProf': isArchivedByProf,
+      'isDeleted': isDeleted,
       'resourceOrder': resourceOrder,
     };
   }
@@ -81,7 +87,7 @@ class ModuleModel extends FirestoreModel {
 
   @override
   String toString() {
-    return 'ModuleModel(courseId: $courseId, title: $title, description: $description, syllabus: $syllabus, teacherUserId: $teacherUserId, isArchivedByProf: $isArchivedByProf, resourceOrder: $resourceOrder)';
+    return 'ModuleModel(courseId: $courseId, title: $title, description: $description, syllabus: $syllabus, teacherUserId: $teacherUserId, isArchivedByProf: $isArchivedByProf, isDeleted: $isDeleted, resourceOrder: $resourceOrder)';
   }
 
   @override
@@ -95,6 +101,7 @@ class ModuleModel extends FirestoreModel {
         other.syllabus == syllabus &&
         other.teacherUserId == teacherUserId &&
         other.isArchivedByProf == isArchivedByProf &&
+        other.isDeleted == isDeleted &&
         listEquals(other.resourceOrder, resourceOrder);
   }
 
@@ -106,6 +113,7 @@ class ModuleModel extends FirestoreModel {
         syllabus.hashCode ^
         teacherUserId.hashCode ^
         isArchivedByProf.hashCode ^
+        isDeleted.hashCode ^
         resourceOrder.hashCode;
   }
 }

@@ -87,11 +87,13 @@ class FormController {
     String? title,
     String? description,
     String? syllabus,
+    bool? isDeleted,
   }) {
     moduleModel = moduleModel.copyWith(
       title: title,
       description: description,
       syllabus: syllabus,
+      isDeleted: isDeleted,
     );
     print('==--> FormController.onChange: $moduleModel');
   }

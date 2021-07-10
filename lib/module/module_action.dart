@@ -53,6 +53,7 @@ class SetModuleCurrentModuleAction extends ReduxAction<AppState> {
       description: '',
       syllabus: '',
       isArchivedByProf: false,
+      isDeleted: false,
     );
     if (id.isNotEmpty) {
       moduleModel = state.moduleState.moduleModelList!

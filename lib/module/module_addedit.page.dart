@@ -2,6 +2,7 @@ import 'package:coordenador/module/module_addedit_connector.dart';
 import 'package:coordenador/module/module_model.dart';
 import 'package:coordenador/teacher/teacher_search_connector.dart';
 import 'package:coordenador/widget/input_checkbox.dart';
+import 'package:coordenador/widget/input_checkboxDelete.dart';
 import 'package:coordenador/widget/input_description.dart';
 import 'package:coordenador/widget/input_title.dart';
 import 'package:flutter/material.dart';
@@ -68,6 +69,15 @@ class _ModuleAddEditPageState extends State<ModuleAddEditPage> {
                 ),
                 TeacherSearchConnector(
                   label: 'Selecionar um professor',
+                ),
+                InputCheckBoxDelete(
+                  title: 'Apagar este curso',
+                  subtitle: 'Remover permanentemente',
+                  value: formController.moduleModel.isDeleted,
+                  onChanged: (value) {
+                    formController.onChange(isDeleted: value);
+                    setState(() {});
+                  },
                 ),
               ],
             )),
