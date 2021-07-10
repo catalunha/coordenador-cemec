@@ -71,7 +71,7 @@ class _CourseAddEditPageState extends State<CourseAddEditPage> {
                 ),
                 InputCheckBox(
                   title: 'Arquivar este curso',
-                  subtitle: 'Enviar ao arquivo',
+                  subtitle: 'Arquivar este curso',
                   value: formController.courseModel.isArchivedByCoord,
                   onChanged: (value) {
                     formController.onChange(isArchivedByCoord: value);

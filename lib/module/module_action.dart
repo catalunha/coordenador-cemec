@@ -10,6 +10,7 @@ class ReadDocsModuleAction extends ReduxAction<AppState> {
     FirebaseFirestore firebaseFirestore = FirebaseFirestore.instance;
     QuerySnapshot<Map<String, dynamic>> querySnapshot = await firebaseFirestore
         .collection(ModuleModel.collection)
+        .where('courseId', isEqualTo: state.courseState.courseModelCurrent!.id)
         .where('isDeleted', isEqualTo: false)
         .get();
     List<ModuleModel> moduleModelList = [];

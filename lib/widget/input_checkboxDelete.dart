@@ -45,7 +45,7 @@ class InputCheckBoxDelete extends StatelessWidget {
                 controlAffinity: ListTileControlAffinity.leading,
                 title: value!
                     ? Text(
-                        title,
+                        subtitle,
                         style: TextStyle(color: AppColors.stroke),
                       )
                     : Text(subtitle),
