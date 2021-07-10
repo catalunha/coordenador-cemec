@@ -21,6 +21,7 @@ class SetCourseCurrentCourseAction extends ReduxAction<AppState> {
       isArchivedByAdm: false,
       isArchivedByCoord: false,
       isDeleted: false,
+      isActive: true,
     );
     if (id.isNotEmpty) {
       courseModel = state.courseState.courseModelList!

@@ -13,10 +13,12 @@ class CourseModel {
   late final String coordinatorUserId; // User.id
   late final String title;
   late final String description;
+  late final String syllabus;
   late final String? iconUrl;
   late final bool isActive; //for adm use
   late final bool isArchivedByAdm; //for adm use
   late final bool isArchivedByCoord; //for coord use
+  late final bool isDeleted; //for coord use
   late final List<String>? moduleOrder;
 }
 
@@ -25,8 +27,9 @@ class ModuleModel {
   late final String title;
   late final String description;
   late final String syllabus;
-  late final String teacherUserId; // User.id
   late final bool isArchivedByProf; //for prof use
+  late final bool isDeleted; //for coord use
+  late final String? teacherUserId; // User.id
   late final List<String>? resourceOrder;
 }
 

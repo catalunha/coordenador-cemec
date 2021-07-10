@@ -14,6 +14,7 @@ class CourseModel extends FirestoreModel {
   final bool isArchivedByAdm; //for adm use
   final bool isArchivedByCoord; //for coord use
   final bool isDeleted; //for coord use
+  final bool isActive; //for adm use
 
   final String? iconUrl;
   final List<String>? moduleOrder;
@@ -28,6 +29,7 @@ class CourseModel extends FirestoreModel {
     required this.isArchivedByAdm,
     required this.isArchivedByCoord,
     required this.isDeleted,
+    required this.isActive,
     this.moduleOrder,
   }) : super(id);
 
@@ -39,6 +41,7 @@ class CourseModel extends FirestoreModel {
     String? iconUrl,
     bool? isArchivedByAdm,
     bool? isDeleted,
+    bool? isActive,
     bool? isArchivedByCoord,
     List<String>? moduleOrder,
   }) {
@@ -52,6 +55,7 @@ class CourseModel extends FirestoreModel {
       isArchivedByAdm: isArchivedByAdm ?? this.isArchivedByAdm,
       isArchivedByCoord: isArchivedByCoord ?? this.isArchivedByCoord,
       isDeleted: isDeleted ?? this.isDeleted,
+      isActive: isActive ?? this.isActive,
       moduleOrder: moduleOrder ?? this.moduleOrder,
     );
   }
@@ -66,6 +70,7 @@ class CourseModel extends FirestoreModel {
       'isArchivedByAdm': isArchivedByAdm,
       'isArchivedByCoord': isArchivedByCoord,
       'isDeleted': isDeleted,
+      'isActive': isActive,
       'moduleOrder': moduleOrder,
     };
   }
@@ -81,6 +86,7 @@ class CourseModel extends FirestoreModel {
       isArchivedByAdm: map['isArchivedByAdm'],
       isArchivedByCoord: map['isArchivedByCoord'],
       isDeleted: map['isDeleted'] ?? false,
+      isActive: map['isActive'] ?? true,
       moduleOrder: map['moduleOrder'] == null
           ? []
           : List<String>.from(map['moduleOrder']),
@@ -94,7 +100,7 @@ class CourseModel extends FirestoreModel {
 
   @override
   String toString() {
-    return 'CourseModel(coordinatorUserId: $coordinatorUserId, title: $title, description: $description, syllabus: $syllabus, iconUrl: $iconUrl, isArchivedByAdm: $isArchivedByAdm, isArchivedByCoord: $isArchivedByCoord, isDeleted: $isDeleted, moduleOrder: $moduleOrder)';
+    return 'CourseModel(coordinatorUserId: $coordinatorUserId, title: $title, description: $description, syllabus: $syllabus, iconUrl: $iconUrl, isArchivedByAdm: $isArchivedByAdm, isArchivedByCoord: $isArchivedByCoord, isDeleted: $isDeleted,isActive: $isActive, moduleOrder: $moduleOrder)';
   }
 
   @override
@@ -110,6 +116,7 @@ class CourseModel extends FirestoreModel {
         other.isArchivedByAdm == isArchivedByAdm &&
         other.isArchivedByCoord == isArchivedByCoord &&
         other.isDeleted == isDeleted &&
+        other.isActive == isActive &&
         listEquals(other.moduleOrder, moduleOrder);
   }
 
@@ -123,6 +130,7 @@ class CourseModel extends FirestoreModel {
         isArchivedByAdm.hashCode ^
         isArchivedByCoord.hashCode ^
         isDeleted.hashCode ^
+        isActive.hashCode ^
         moduleOrder.hashCode;
   }
 }

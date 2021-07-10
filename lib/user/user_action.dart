@@ -31,6 +31,7 @@ class GetDocGoogleAccountUserAction extends ReduxAction<AppState> {
     var querySnapshot = await firebaseFirestore
         .collection(UserModel.collection)
         .where('uid', isEqualTo: uid)
+        .where('isActive', isEqualTo: true)
         .get();
     var documentIdList = querySnapshot.docs
         .map((queryDocumentSnapshot) => queryDocumentSnapshot.id)

@@ -8,6 +8,7 @@ class UserModel extends FirestoreModel {
   final String email;
   final String? phoneNumber;
   final String? photoURL;
+  final bool isActive;
 
   UserModel(
     String id, {
@@ -15,6 +16,7 @@ class UserModel extends FirestoreModel {
     required this.email,
     this.phoneNumber,
     this.photoURL,
+    required this.isActive,
   }) : super(id);
 
   UserModel copyWith({
@@ -22,6 +24,7 @@ class UserModel extends FirestoreModel {
     String? email,
     String? phoneNumber,
     String? photoURL,
+    bool? isActive,
   }) {
     return UserModel(
       id,
@@ -29,6 +32,7 @@ class UserModel extends FirestoreModel {
       email: email ?? this.email,
       phoneNumber: phoneNumber ?? this.phoneNumber,
       photoURL: photoURL ?? this.photoURL,
+      isActive: isActive ?? this.isActive,
     );
   }
 
@@ -39,6 +43,7 @@ class UserModel extends FirestoreModel {
       email: map['email'],
       phoneNumber: map['phoneNumber'],
       photoURL: map['photoURL'],
+      isActive: map['isActive'],
     );
   }
 
@@ -51,6 +56,7 @@ class UserModel extends FirestoreModel {
       'email': email,
       'phoneNumber': phoneNumber,
       'photoURL': photoURL,
+      'isActive': isActive,
     };
   }
 
@@ -66,6 +72,7 @@ class UserModel extends FirestoreModel {
     if (identical(this, other)) return true;
 
     return other is UserModel &&
+        other.isActive == isActive &&
         other.displayName == displayName &&
         other.email == email &&
         other.phoneNumber == phoneNumber &&
@@ -75,6 +82,7 @@ class UserModel extends FirestoreModel {
   @override
   int get hashCode {
     return displayName.hashCode ^
+        isActive.hashCode ^
         email.hashCode ^
         phoneNumber.hashCode ^
         photoURL.hashCode;
