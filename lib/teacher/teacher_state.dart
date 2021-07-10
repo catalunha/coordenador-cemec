@@ -16,16 +16,15 @@ class TeacherState {
         teacherCurrent: null,
         teacherList: [],
       );
-  // TeacherState resetTeacherCurrent() => TeacherState(
-  //       teacherCurrent: null,
-  //       teacherList: this.teacherList,
-  //     );
+
   TeacherState copyWith({
     UserModel? teacherCurrent,
+    bool teacherCurrentNull = false,
     List<UserModel>? teacherList,
   }) {
     return TeacherState(
-      teacherCurrent: teacherCurrent, // ?? this.teacherCurrent,
+      teacherCurrent:
+          teacherCurrentNull ? null : teacherCurrent ?? this.teacherCurrent,
       teacherList: teacherList ?? this.teacherList,
     );
   }

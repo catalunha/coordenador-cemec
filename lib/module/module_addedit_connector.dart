@@ -16,7 +16,8 @@ class ModuleAddEditConnector extends StatelessWidget {
     return StoreConnector<AppState, ModuleAddEditViewModel>(
       onInit: (store) {
         store.dispatch(SetModuleCurrentModuleAction(id: addOrEditId));
-        store.dispatch(RestartingStateTeacherAction());
+        // store.dispatch(RestartingStateTeacherAction());
+        store.dispatch(SetTeacherCurrentTeacherAction(id: null));
         if (addOrEditId.isNotEmpty &&
             store.state.moduleState.moduleModelCurrent!.teacherUserId != null) {
           store.dispatch(SetTeacherCurrentTeacherAction(
@@ -47,6 +48,8 @@ class ModuleAddEditFactory extends VmFactory<AppState, ModuleAddEditConnector> {
             print(state.teacherState.teacherCurrent!.id);
             moduleModel = moduleModel.copyWith(
                 teacherUserId: state.teacherState.teacherCurrent!.id);
+          } else {
+            moduleModel = moduleModel.copyWith(teacherUserIdNull: true);
           }
           if (widget!.addOrEditId.isEmpty) {
             dispatch(CreateDocModuleAction(moduleModel: moduleModel));

@@ -29,7 +29,7 @@ class ResourcePage extends StatelessWidget {
       body: Column(
         children: [
           Padding(
-            padding: const EdgeInsets.only(left: 8, top: 4, right: 8),
+            padding: const EdgeInsets.only(left: 16, top: 4, right: 16),
             child: Card(
               shape: RoundedRectangleBorder(
                   borderRadius: BorderRadius.circular(15)),
@@ -37,15 +37,15 @@ class ResourcePage extends StatelessWidget {
               elevation: 10,
               child: Column(
                 children: [
-                  Padding(
-                    padding: const EdgeInsets.only(left: 10.0),
-                    child: Align(
-                      alignment: Alignment.topLeft,
-                      child: Text(
-                        'Curso:',
-                      ),
-                    ),
-                  ),
+                  // Padding(
+                  //   padding: const EdgeInsets.only(left: 10.0),
+                  //   child: Align(
+                  //     alignment: Alignment.topLeft,
+                  //     child: Text(
+                  //       'Curso:',
+                  //     ),
+                  //   ),
+                  // ),
                   ListTile(
                     leading: courseModel.iconUrl == null
                         ? Icon(Icons.favorite_outline_rounded)
@@ -65,7 +65,7 @@ class ResourcePage extends StatelessWidget {
             ),
           ),
           Padding(
-            padding: const EdgeInsets.only(left: 16, top: 4, right: 16),
+            padding: const EdgeInsets.only(left: 8, top: 4, right: 8),
             child: Card(
               shape: RoundedRectangleBorder(
                   borderRadius: BorderRadius.circular(15)),
@@ -73,15 +73,15 @@ class ResourcePage extends StatelessWidget {
               color: Colors.lightBlueAccent,
               child: Column(
                 children: [
-                  Padding(
-                    padding: const EdgeInsets.only(left: 10.0),
-                    child: Align(
-                      alignment: Alignment.topLeft,
-                      child: Text(
-                        'Môdulo:',
-                      ),
-                    ),
-                  ),
+                  // Padding(
+                  //   padding: const EdgeInsets.only(left: 10.0),
+                  //   child: Align(
+                  //     alignment: Alignment.topLeft,
+                  //     child: Text(
+                  //       'Môdulo:',
+                  //     ),
+                  //   ),
+                  // ),
                   Text(
                     moduleModel.title,
                     style: AppTextStyles.titleBoldHeading,

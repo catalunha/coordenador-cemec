@@ -1,9 +1,13 @@
 import 'package:coordenador/course/course_model.dart';
 import 'package:flutter/material.dart';
 
-class CourseCard extends StatelessWidget {
+class CourseCardArchived extends StatelessWidget {
   final CourseModel courseModel;
-  const CourseCard({Key? key, required this.courseModel}) : super(key: key);
+  final Function(String) unArchived;
+
+  const CourseCardArchived(
+      {Key? key, required this.courseModel, required this.unArchived})
+      : super(key: key);
 
   @override
   Widget build(BuildContext context) {
@@ -48,17 +52,10 @@ class CourseCard extends StatelessWidget {
           Wrap(
             children: [
               IconButton(
-                icon: Icon(Icons.edit),
-                onPressed: () async {
-                  Navigator.pushNamed(context, '/course_addedit',
-                      arguments: courseModel.id);
-                },
-              ),
-              IconButton(
-                icon: Icon(Icons.post_add_outlined),
-                onPressed: () async {
-                  Navigator.pushNamed(context, '/module',
-                      arguments: courseModel.id);
+                icon: Icon(Icons.upcoming),
+                onPressed: () {
+                  unArchived(courseModel.id);
+                  Navigator.pop(context);
                 },
               ),
             ],

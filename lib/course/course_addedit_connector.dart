@@ -87,11 +87,15 @@ class FormController {
     String? title,
     String? description,
     String? syllabus,
+    bool? isDeleted,
+    bool? isArchivedByCoord,
   }) {
     courseModel = courseModel.copyWith(
       title: title,
       description: description,
       syllabus: syllabus,
+      isDeleted: isDeleted,
+      isArchivedByCoord: isArchivedByCoord,
     );
     print('==--> FormController.onChange: $courseModel');
   }

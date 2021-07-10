@@ -1,6 +1,7 @@
 import 'package:coordenador/module/module_addedit_connector.dart';
 import 'package:coordenador/module/module_model.dart';
 import 'package:coordenador/teacher/teacher_search_connector.dart';
+import 'package:coordenador/widget/input_checkbox.dart';
 import 'package:coordenador/widget/input_description.dart';
 import 'package:coordenador/widget/input_title.dart';
 import 'package:flutter/material.dart';
@@ -29,8 +30,8 @@ class _ModuleAddEditPageState extends State<ModuleAddEditPage> {
     return Scaffold(
       appBar: AppBar(
         title: Text(formController.moduleModel.id.isEmpty
-            ? 'Adicionar môdulo'
-            : 'Edit môdulo'),
+            ? 'Adicionar um môdulo'
+            : 'Editar este môdulo'),
       ),
       body: SingleChildScrollView(
         child: Form(
@@ -65,7 +66,7 @@ class _ModuleAddEditPageState extends State<ModuleAddEditPage> {
                   },
                 ),
                 TeacherSearchConnector(
-                  label: 'Selecionar professor',
+                  label: 'Selecionar um professor',
                 ),
               ],
             )),

@@ -38,7 +38,7 @@ class SetTeacherListTeacherAction extends ReduxAction<AppState> {
 }
 
 class SetTeacherCurrentTeacherAction extends ReduxAction<AppState> {
-  final String id;
+  final String? id;
   SetTeacherCurrentTeacherAction({
     required this.id,
   });
@@ -46,7 +46,7 @@ class SetTeacherCurrentTeacherAction extends ReduxAction<AppState> {
   AppState? reduce() {
     print('--> SetTeacherCurrentTeacherAction $id');
     UserModel userModel;
-    if (id.isNotEmpty) {
+    if (id != null && id!.isNotEmpty) {
       userModel = state.teacherState.teacherList!
           .firstWhere((element) => element.id == id);
       return state.copyWith(
@@ -54,13 +54,19 @@ class SetTeacherCurrentTeacherAction extends ReduxAction<AppState> {
           teacherCurrent: userModel,
         ),
       );
+    } else {
+      return state.copyWith(
+        teacherState: state.teacherState.copyWith(
+          teacherCurrentNull: true,
+        ),
+      );
     }
   }
 }
 
-class RestartingStateTeacherAction extends ReduxAction<AppState> {
-  RestartingStateTeacherAction();
-  AppState reduce() {
-    return state.copyWith(teacherState: state.teacherState.copyWith());
-  }
-}
+// class RestartingStateTeacherAction extends ReduxAction<AppState> {
+//   RestartingStateTeacherAction();
+//   AppState reduce() {
+//     return state.copyWith(teacherState: state.teacherState.copyWith());
+//   }
+// }

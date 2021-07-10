@@ -31,7 +31,8 @@ class ModuleModel extends FirestoreModel {
     String? description,
     String? syllabus,
     bool? isArchivedByProf,
-    String? teacherUserId,
+    String? teacherUserId = '',
+    bool teacherUserIdNull = false,
     List<String>? resourceOrder,
   }) {
     return ModuleModel(
@@ -40,8 +41,9 @@ class ModuleModel extends FirestoreModel {
       title: title ?? this.title,
       description: description ?? this.description,
       syllabus: syllabus ?? this.syllabus,
-      teacherUserId: teacherUserId ?? this.teacherUserId,
       isArchivedByProf: isArchivedByProf ?? this.isArchivedByProf,
+      teacherUserId:
+          teacherUserIdNull ? null : teacherUserId ?? this.teacherUserId,
       resourceOrder: resourceOrder ?? this.resourceOrder,
     );
   }

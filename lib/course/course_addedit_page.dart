@@ -1,5 +1,7 @@
 import 'package:coordenador/course/course_addedit_connector.dart';
 import 'package:coordenador/course/course_model.dart';
+import 'package:coordenador/widget/input_checkbox.dart';
+import 'package:coordenador/widget/input_checkboxDelete.dart';
 import 'package:coordenador/widget/input_description.dart';
 import 'package:coordenador/widget/input_file_connector.dart';
 import 'package:coordenador/widget/input_title.dart';
@@ -30,7 +32,7 @@ class _CourseAddEditPageState extends State<CourseAddEditPage> {
       appBar: AppBar(
         title: Text(formController.courseModel.id.isEmpty
             ? 'Adicionar curso'
-            : 'Edit curso'),
+            : 'Editar curso'),
       ),
       body: SingleChildScrollView(
         child: Form(
@@ -67,6 +69,27 @@ class _CourseAddEditPageState extends State<CourseAddEditPage> {
                 InputFileConnector(
                   label: 'Informe o ícone do curso',
                 ),
+                InputCheckBox(
+                  title: 'Arquivar este curso',
+                  subtitle: 'Enviar ao arquivo',
+                  value: formController.courseModel.isArchivedByCoord,
+                  onChanged: (value) {
+                    formController.onChange(isArchivedByCoord: value);
+                    setState(() {});
+                  },
+                ),
+                InputCheckBoxDelete(
+                  title: 'Apagar este curso',
+                  subtitle: 'Remover permanentemente',
+                  value: formController.courseModel.isDeleted,
+                  onChanged: (value) {
+                    formController.onChange(isDeleted: value);
+                    setState(() {});
+                  },
+                ),
+                SizedBox(
+                  height: 100,
+                )
               ],
             )),
       ),

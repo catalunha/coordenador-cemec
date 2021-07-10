@@ -42,7 +42,7 @@ class InputDescription extends StatelessWidget {
                 mainAxisSize: MainAxisSize.min,
                 children: [
                   Padding(
-                    padding: const EdgeInsets.symmetric(horizontal: 18),
+                    padding: const EdgeInsets.symmetric(horizontal: 8),
                     child: Icon(
                       icon,
                       color: AppColors.primary,

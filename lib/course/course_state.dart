@@ -9,6 +9,10 @@ class CourseState {
       state.courseState.courseModelList!
           .where((element) => element.isArchivedByCoord == false)
           .toList();
+  static List<CourseModel> selectCourseArchived(AppState state) =>
+      state.courseState.courseModelList!
+          .where((element) => element.isArchivedByCoord == true)
+          .toList();
   CourseState({
     this.courseModelCurrent,
     this.courseModelList,
