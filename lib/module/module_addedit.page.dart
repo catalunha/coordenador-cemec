@@ -71,7 +71,7 @@ class _ModuleAddEditPageState extends State<ModuleAddEditPage> {
                   label: 'Selecionar um professor',
                 ),
                 InputCheckBoxDelete(
-                  title: 'Apagar este curso',
+                  title: 'Apagar este modulo',
                   subtitle: 'Remover permanentemente',
                   value: formController.moduleModel.isDeleted,
                   onChanged: (value) {

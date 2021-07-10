@@ -8,8 +8,10 @@ class ReadDocsModuleAction extends ReduxAction<AppState> {
   Future<AppState?> reduce() async {
     print('--> ReadDocsModuleAction');
     FirebaseFirestore firebaseFirestore = FirebaseFirestore.instance;
-    QuerySnapshot<Map<String, dynamic>> querySnapshot =
-        await firebaseFirestore.collection(ModuleModel.collection).get();
+    QuerySnapshot<Map<String, dynamic>> querySnapshot = await firebaseFirestore
+        .collection(ModuleModel.collection)
+        .where('isDeleted', isEqualTo: false)
+        .get();
     List<ModuleModel> moduleModelList = [];
     moduleModelList = querySnapshot.docs
         .map(
