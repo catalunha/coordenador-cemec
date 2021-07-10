@@ -37,6 +37,7 @@ class _ModuleAddEditPageState extends State<ModuleAddEditPage> {
         child: Form(
             key: formController.formKey,
             child: Column(
+              mainAxisSize: MainAxisSize.min,
               children: [
                 InputTitle(
                   label: 'Título do môdulo',

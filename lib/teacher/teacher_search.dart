@@ -1,5 +1,6 @@
 import 'package:coordenador/teacher/teacher_card.dart';
 import 'package:coordenador/teacher/teacher_list_connector.dart';
+import 'package:coordenador/theme/app_colors.dart';
 import 'package:coordenador/user/user_model.dart';
 import 'package:flutter/material.dart';
 
@@ -17,39 +18,67 @@ class TeacherSearch extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Row(
+    return Column(
+      mainAxisSize: MainAxisSize.min,
       children: [
-        Column(
+        Text(label),
+        Row(
+          mainAxisSize: MainAxisSize.min,
           children: [
-            ListTile(
-              leading: Icon(Icons.search),
-              title: Text(label),
-              onTap: () async {
-                await showDialog<void>(
-                    context: context,
-                    builder: (BuildContext context) {
-                      return TeacherListConnector(
-                        label: 'Selecione um professor',
-                      );
-                    });
-              },
+            Padding(
+              padding: const EdgeInsets.symmetric(horizontal: 8),
+              child: Icon(
+                Icons.person_search_outlined,
+                color: AppColors.primary,
+              ),
             ),
-            teacher != null
-                ? Column(
-                    children: [
-                      TeacherCard(teacher: teacher!),
-                      ListTile(
-                        title: Text(
-                          'Retirar este professor deste môdulo',
-                          textAlign: TextAlign.end,
-                        ),
-                        trailing: Icon(Icons.delete_forever_outlined),
-                        onTap: onDeleteTeacher,
-                      )
-                    ],
-                  )
-                : Container(),
+            // Icon(Icons.find_in_page_outlined),
+            Container(
+              width: 1,
+              height: 48,
+              color: AppColors.stroke,
+            ),
+            Expanded(
+              child: Column(
+                children: [
+                  ListTile(
+                    leading: Icon(Icons.search),
+                    title: Text('Clique para buscar da lista'),
+                    onTap: () async {
+                      await showDialog<void>(
+                          context: context,
+                          builder: (BuildContext context) {
+                            return TeacherListConnector(
+                              label: 'Selecione um professor',
+                            );
+                          });
+                    },
+                  ),
+                  teacher != null
+                      ? Column(
+                          mainAxisSize: MainAxisSize.min,
+                          children: [
+                            TeacherCard(teacher: teacher!),
+                            ListTile(
+                              title: Text(
+                                'Retirar este professor deste môdulo',
+                                textAlign: TextAlign.end,
+                              ),
+                              trailing: Icon(Icons.delete_forever_outlined),
+                              onTap: onDeleteTeacher,
+                            )
+                          ],
+                        )
+                      : Container(),
+                ],
+              ),
+            ),
           ],
+        ),
+        Divider(
+          height: 1,
+          thickness: 1,
+          color: AppColors.stroke,
         ),
       ],
     );
