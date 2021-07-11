@@ -32,8 +32,9 @@ class CourseCard extends StatelessWidget {
                       ),
                     ),
                   ),
-            title: Text(courseModel.title),
-            subtitle: Text(courseModel.description),
+            title: Text('${courseModel.id}\n${courseModel.title}'),
+            subtitle: Text(
+                'Môdulos:${courseModel.moduleOrder?.length}\nEmenta:${courseModel.description}'),
           ),
           Padding(
             padding: const EdgeInsets.only(left: 10),

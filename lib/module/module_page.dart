@@ -47,8 +47,8 @@ class _ModulePageState extends State<ModulePage> {
                             backgroundColor: Colors.transparent,
                           ),
                     title: Text(widget.courseModel.title),
-                    subtitle:
-                        Text('Com ${widget.moduleModelList.length} môdulos.'),
+                    subtitle: Text(
+                        'Com ${widget.moduleModelList.length} ou ${widget.courseModel.moduleOrder!.length} môdulos.'),
                     // tileColor: Colors.green,
                   ),
                 ],
@@ -59,7 +59,7 @@ class _ModulePageState extends State<ModulePage> {
             child: ReorderableListView(
               scrollDirection: Axis.vertical,
               onReorder: _onReorder,
-              children: buildItens(),
+              children: buildItens(context),
             ),
           ),
           // Expanded(
@@ -82,14 +82,15 @@ class _ModulePageState extends State<ModulePage> {
     );
   }
 
-  buildItens() {
+  buildItens(context) {
     List<Widget> list = [];
     Map<String, ModuleModel> map = Map.fromIterable(
       widget.moduleModelList,
       key: (element) => element.id,
       value: (element) => element,
     );
-
+    print('-> tamanho do ${map.length}');
+    print('-> tamanho do ${widget.courseModel.moduleOrder!.length}');
     for (var index in widget.courseModel.moduleOrder!) {
       print('$index');
       if (map[index] != null) {
@@ -110,15 +111,15 @@ class _ModulePageState extends State<ModulePage> {
 
   void _onReorder(int oldIndex, int newIndex) {
     //print('oldIndex:$oldIndex | newIndex:$newIndex');
-    if (newIndex > oldIndex) {
-      newIndex -= 1;
-    }
-    List<String> moduleOrderTemp = widget.courseModel.moduleOrder!;
     setState(() {
-      String moduleId = moduleOrderTemp[oldIndex];
-      moduleOrderTemp.removeAt(oldIndex);
-      moduleOrderTemp.insert(newIndex, moduleId);
+      if (newIndex > oldIndex) {
+        newIndex -= 1;
+      }
     });
+    List<String> moduleOrderTemp = widget.courseModel.moduleOrder!;
+    String moduleId = moduleOrderTemp[oldIndex];
+    moduleOrderTemp.removeAt(oldIndex);
+    moduleOrderTemp.insert(newIndex, moduleId);
     // var index = 1;
     // List<String> moduleModelListOrderned =
     //     _moduleModelList.map((e) => e.id).toList();

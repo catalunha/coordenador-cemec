@@ -54,8 +54,8 @@ class ModuleViewModel extends Vm {
   final List<ModuleModel> moduleModelList;
   final Function(List<String>) onChangeModuleOrder;
   ModuleViewModel({
-    required this.moduleModelList,
     required this.courseModel,
+    required this.moduleModelList,
     required this.onChangeModuleOrder,
   }) : super(equals: [
           courseModel,

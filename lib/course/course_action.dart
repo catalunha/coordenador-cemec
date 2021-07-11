@@ -108,6 +108,7 @@ class StreamDocsCourseAction extends ReduxAction<AppState> {
                 CourseModel.fromMap(docSnapshot.id, docSnapshot.data()))
             .toList());
     streamList.listen((List<CourseModel> courseModelList) {
+      print('--> courseModel foi alterado...');
       dispatch(
           SetCourseModelListCourseAction(courseModelList: courseModelList));
     });
@@ -130,6 +131,14 @@ class SetCourseModelListCourseAction extends ReduxAction<AppState> {
         courseModelList: courseModelList,
       ),
     );
+  }
+
+  void before() {
+    print('SetCourseModelListCourseAction.before');
+    if (state.courseState.courseModelCurrent != null) {
+      dispatch(SetCourseCurrentCourseAction(
+          id: state.courseState.courseModelCurrent!.id));
+    }
   }
 }
 
