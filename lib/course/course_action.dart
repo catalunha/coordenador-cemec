@@ -132,3 +132,29 @@ class SetCourseModelListCourseAction extends ReduxAction<AppState> {
     );
   }
 }
+
+class UpdateModuleOrderCourseAction extends ReduxAction<AppState> {
+  final String id;
+  final bool isUnionOrRemove;
+  UpdateModuleOrderCourseAction({
+    required this.id,
+    required this.isUnionOrRemove,
+  });
+  @override
+  Future<AppState?> reduce() async {
+    FirebaseFirestore firebaseFirestore = FirebaseFirestore.instance;
+    DocumentReference docRef = firebaseFirestore
+        .collection(CourseModel.collection)
+        .doc(state.courseState.courseModelCurrent!.id);
+    if (isUnionOrRemove) {
+      await docRef.update({
+        'moduleOrder': FieldValue.arrayUnion([id])
+      });
+    } else {
+      await docRef.update({
+        'moduleOrder': FieldValue.arrayRemove([id])
+      });
+    }
+    return null;
+  }
+}

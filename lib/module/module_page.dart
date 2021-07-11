@@ -47,6 +47,8 @@ class _ModulePageState extends State<ModulePage> {
                             backgroundColor: Colors.transparent,
                           ),
                     title: Text(widget.courseModel.title),
+                    subtitle:
+                        Text('Com ${widget.moduleModelList.length} môdulos.'),
                     // tileColor: Colors.green,
                   ),
                 ],
@@ -102,6 +104,7 @@ class _ModulePageState extends State<ModulePage> {
       //   ),
       // );
     }
+    setState(() {});
     return list;
   }
 

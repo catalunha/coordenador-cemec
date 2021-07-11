@@ -1,6 +1,7 @@
 import 'package:async_redux/async_redux.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:coordenador/app_state.dart';
+import 'package:coordenador/course/course_action.dart';
 import 'package:coordenador/module/module_model.dart';
 
 class ReadDocsModuleAction extends ReduxAction<AppState> {
@@ -111,7 +112,11 @@ class CreateDocModuleAction extends ReduxAction<AppState> {
     FirebaseFirestore firebaseFirestore = FirebaseFirestore.instance;
     CollectionReference docRef =
         firebaseFirestore.collection(ModuleModel.collection);
-    await docRef.add(moduleModel.toMap()).then((docRef) => print(docRef));
+    await docRef.add(moduleModel.toMap()).then((docRef) {
+      print('--> Add ${docRef.id} em course.moduleOrder');
+      dispatch(
+          UpdateModuleOrderCourseAction(id: docRef.id, isUnionOrRemove: true));
+    });
     return null;
   }
 }
@@ -127,7 +132,13 @@ class UpdateDocModuleAction extends ReduxAction<AppState> {
     DocumentReference docRef = firebaseFirestore
         .collection(ModuleModel.collection)
         .doc(moduleModel.id);
-    await docRef.update(moduleModel.toMap());
+    await docRef.update(moduleModel.toMap()).then((value) {
+      if (moduleModel.isDeleted) {
+        print('--> remove ${docRef.id} em course.moduleOrder');
+        dispatch(UpdateModuleOrderCourseAction(
+            id: docRef.id, isUnionOrRemove: false));
+      }
+    });
     return null;
   }
 }
