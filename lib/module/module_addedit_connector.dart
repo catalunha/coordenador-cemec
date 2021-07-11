@@ -24,7 +24,7 @@ class ModuleAddEditConnector extends StatelessWidget {
               id: store.state.moduleState.moduleModelCurrent!.teacherUserId!));
         }
       },
-      onDispose: (store) => store.dispatch(ReadDocsModuleAction()),
+      // onDispose: (store) => store.dispatch(ReadDocsModuleAction()),
       vm: () => ModuleAddEditFactory(this),
       builder: (context, vm) => ModuleAddEditPage(
         formController: vm.formController,

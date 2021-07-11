@@ -27,6 +27,36 @@ class ReadDocsResourceAction extends ReduxAction<AppState> {
   }
 }
 
+class StreamDocsResourceAction extends ReduxAction<AppState> {
+  @override
+  Future<AppState?> reduce() async {
+    print('--> StreamDocsResourceAction');
+    FirebaseFirestore firebaseFirestore = FirebaseFirestore.instance;
+    Query<Map<String, dynamic>> collRef;
+    collRef = firebaseFirestore
+        .collection(ResourceModel.collection)
+        .where('moduleId', isEqualTo: state.moduleState.moduleModelCurrent!.id);
+
+    Stream<QuerySnapshot<Map<String, dynamic>>> streamQuerySnapshot =
+        collRef.snapshots();
+
+    Stream<List<ResourceModel>> streamList = streamQuerySnapshot.map(
+        (querySnapshot) => querySnapshot.docs
+            .map((docSnapshot) =>
+                ResourceModel.fromMap(docSnapshot.id, docSnapshot.data()))
+            .toList());
+    streamList.listen((List<ResourceModel> resourceModelList) {
+      dispatch(SetResourceModelListResourceAction(
+          resourceModelList: resourceModelList));
+    });
+    // BillState.billStream = streamList.listen((List<BillModel> billModelList) {
+    //   dispatch(SetBillListBillAction(billModelList: billModelList));
+    // });
+
+    return null;
+  }
+}
+
 class SetResourceModelListResourceAction extends ReduxAction<AppState> {
   final List<ResourceModel> resourceModelList;
 

@@ -88,6 +88,37 @@ class ReadDocsCourseAction extends ReduxAction<AppState> {
   }
 }
 
+class StreamDocsCourseAction extends ReduxAction<AppState> {
+  @override
+  Future<AppState?> reduce() async {
+    print('--> StreamDocsCourseAction');
+    FirebaseFirestore firebaseFirestore = FirebaseFirestore.instance;
+    Query<Map<String, dynamic>> collRef;
+    collRef = firebaseFirestore
+        .collection(CourseModel.collection)
+        .where('coordinatorUserId', isEqualTo: state.userState.userCurrent!.id)
+        .where('isDeleted', isEqualTo: false);
+
+    Stream<QuerySnapshot<Map<String, dynamic>>> streamQuerySnapshot =
+        collRef.snapshots();
+
+    Stream<List<CourseModel>> streamList = streamQuerySnapshot.map(
+        (querySnapshot) => querySnapshot.docs
+            .map((docSnapshot) =>
+                CourseModel.fromMap(docSnapshot.id, docSnapshot.data()))
+            .toList());
+    streamList.listen((List<CourseModel> courseModelList) {
+      dispatch(
+          SetCourseModelListCourseAction(courseModelList: courseModelList));
+    });
+    // BillState.billStream = streamList.listen((List<BillModel> billModelList) {
+    //   dispatch(SetBillListBillAction(billModelList: billModelList));
+    // });
+
+    return null;
+  }
+}
+
 class SetCourseModelListCourseAction extends ReduxAction<AppState> {
   final List<CourseModel> courseModelList;
 

@@ -117,6 +117,7 @@ class CourseModel extends FirestoreModel {
         other.isArchivedByCoord == isArchivedByCoord &&
         other.isDeleted == isDeleted &&
         other.isActive == isActive &&
+        // other.moduleOrder == moduleOrder;
         listEquals(other.moduleOrder, moduleOrder);
   }
 

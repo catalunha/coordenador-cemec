@@ -19,15 +19,16 @@ class ModuleConnector extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return StoreConnector<AppState, ModuleViewModel>(
-      onInit: (store) {
+      onInit: (store) async {
         store.dispatch(SetCourseCurrentCourseAction(id: courseId));
-        store.dispatch(ReadDocsModuleAction());
-        store.dispatch(ReadDocsTeacherAction());
+        await store.dispatch(ReadDocsTeacherAction());
+        store.dispatch(StreamDocsModuleAction());
       },
       vm: () => ModuleFactory(this),
       builder: (context, vm) => ModulePage(
         courseModel: vm.courseModel,
         moduleModelList: vm.moduleModelList,
+        onChangeModuleOrder: vm.onChangeModuleOrder,
       ),
     );
   }
@@ -38,16 +39,26 @@ class ModuleFactory extends VmFactory<AppState, ModuleConnector> {
   ModuleViewModel fromStore() => ModuleViewModel(
         courseModel: state.courseState.courseModelCurrent!,
         moduleModelList: state.moduleState.moduleModelList!,
+        onChangeModuleOrder: (List<String> moduleOrder) {
+          print('onChangeModuleOrder');
+          CourseModel courseModel = state.courseState.courseModelCurrent!;
+          courseModel = courseModel.copyWith(moduleOrder: moduleOrder);
+          dispatch(UpdateDocCourseAction(courseModel: courseModel));
+          // dispatch(ReadDocsCourseAction());
+        },
       );
 }
 
 class ModuleViewModel extends Vm {
   final CourseModel courseModel;
   final List<ModuleModel> moduleModelList;
+  final Function(List<String>) onChangeModuleOrder;
   ModuleViewModel({
     required this.moduleModelList,
     required this.courseModel,
+    required this.onChangeModuleOrder,
   }) : super(equals: [
+          courseModel,
           moduleModelList,
         ]);
 }

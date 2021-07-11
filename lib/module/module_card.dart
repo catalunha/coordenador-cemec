@@ -1,6 +1,5 @@
 import 'package:coordenador/module/module_model.dart';
 import 'package:coordenador/teacher/teacher_card.dart';
-import 'package:coordenador/teacher/teacher_state.dart';
 import 'package:coordenador/user/user_model.dart';
 import 'package:flutter/material.dart';
 
@@ -14,6 +13,7 @@ class ModuleCard extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Card(
+      // key: ValueKey(moduleModel),
       elevation: 10,
       child: Column(
         mainAxisSize: MainAxisSize.min,
@@ -25,7 +25,7 @@ class ModuleCard extends StatelessWidget {
                   leading: Icon(Icons.person_off_outlined),
                 ),
           ListTile(
-            title: Text('${moduleModel.title}'),
+            title: Text('${moduleModel.id}\n${moduleModel.title}'),
             subtitle: Text('${moduleModel.description}'),
           ),
           Padding(

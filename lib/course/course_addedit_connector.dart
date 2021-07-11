@@ -24,7 +24,7 @@ class CourseAddEditConnector extends StatelessWidget {
               url: store.state.courseState.courseModelCurrent!.iconUrl!));
         }
       },
-      onDispose: (store) => store.dispatch(ReadDocsCourseAction()),
+      // onDispose: (store) => store.dispatch(ReadDocsCourseAction()),
       vm: () => CourseAddEditFactory(this),
       builder: (context, vm) => CourseAddEditPage(
         formController: vm.formController,

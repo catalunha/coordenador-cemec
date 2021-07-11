@@ -102,6 +102,7 @@ class ModuleModel extends FirestoreModel {
         other.teacherUserId == teacherUserId &&
         other.isArchivedByProf == isArchivedByProf &&
         other.isDeleted == isDeleted &&
+        // other.resourceOrder == resourceOrder;
         listEquals(other.resourceOrder, resourceOrder);
   }
 

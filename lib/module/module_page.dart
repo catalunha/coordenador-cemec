@@ -1,19 +1,25 @@
 import 'package:coordenador/course/course_model.dart';
-import 'package:coordenador/module/module_card.dart';
 import 'package:coordenador/module/module_card_connector.dart';
 import 'package:coordenador/module/module_model.dart';
 import 'package:flutter/material.dart';
 
-class ModulePage extends StatelessWidget {
-  final List<ModuleModel> moduleModelList;
+class ModulePage extends StatefulWidget {
   final CourseModel courseModel;
+  final List<ModuleModel> moduleModelList;
+  final Function(List<String>) onChangeModuleOrder;
 
   const ModulePage({
     Key? key,
     required this.moduleModelList,
     required this.courseModel,
+    required this.onChangeModuleOrder,
   }) : super(key: key);
 
+  @override
+  _ModulePageState createState() => _ModulePageState();
+}
+
+class _ModulePageState extends State<ModulePage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -32,15 +38,15 @@ class ModulePage extends StatelessWidget {
               child: Column(
                 children: [
                   ListTile(
-                    leading: courseModel.iconUrl == null
+                    leading: widget.courseModel.iconUrl == null
                         ? Icon(Icons.favorite_outline_rounded)
                         : CircleAvatar(
                             // radius: 20,
-                            child:
-                                Image.network(courseModel.iconUrl!.toString()),
+                            child: Image.network(
+                                widget.courseModel.iconUrl!.toString()),
                             backgroundColor: Colors.transparent,
                           ),
-                    title: Text(courseModel.title),
+                    title: Text(widget.courseModel.title),
                     // tileColor: Colors.green,
                   ),
                 ],
@@ -48,14 +54,21 @@ class ModulePage extends StatelessWidget {
             ),
           ),
           Expanded(
-            child: SingleChildScrollView(
-              child: Column(
-                children: moduleModelList
-                    .map((e) => ModuleCardConnector(moduleModel: e))
-                    .toList(),
-              ),
+            child: ReorderableListView(
+              scrollDirection: Axis.vertical,
+              onReorder: _onReorder,
+              children: buildItens(),
             ),
           ),
+          // Expanded(
+          //   child: SingleChildScrollView(
+          //     child: Column(
+          //       children: moduleModelList
+          //           .map((e) => ModuleCardConnector(moduleModel: e))
+          //           .toList(),
+          //     ),
+          //   ),
+          // ),
         ],
       ),
       floatingActionButton: FloatingActionButton(
@@ -65,5 +78,47 @@ class ModulePage extends StatelessWidget {
         },
       ),
     );
+  }
+
+  buildItens() {
+    List<Widget> list = [];
+    Map<String, ModuleModel> map = Map.fromIterable(
+      widget.moduleModelList,
+      key: (element) => element.id,
+      value: (element) => element,
+    );
+
+    for (var index in widget.courseModel.moduleOrder!) {
+      print('$index');
+      if (map[index] != null) {
+        list.add(Container(
+            key: ValueKey(index),
+            child: ModuleCardConnector(moduleModel: map[index]!)));
+      }
+      // list.add(
+      //   ListTile(
+      //     key: ValueKey(index),
+      //     title: Text('$index'),
+      //   ),
+      // );
+    }
+    return list;
+  }
+
+  void _onReorder(int oldIndex, int newIndex) {
+    //print('oldIndex:$oldIndex | newIndex:$newIndex');
+    if (newIndex > oldIndex) {
+      newIndex -= 1;
+    }
+    List<String> moduleOrderTemp = widget.courseModel.moduleOrder!;
+    setState(() {
+      String moduleId = moduleOrderTemp[oldIndex];
+      moduleOrderTemp.removeAt(oldIndex);
+      moduleOrderTemp.insert(newIndex, moduleId);
+    });
+    // var index = 1;
+    // List<String> moduleModelListOrderned =
+    //     _moduleModelList.map((e) => e.id).toList();
+    widget.onChangeModuleOrder(moduleOrderTemp);
   }
 }

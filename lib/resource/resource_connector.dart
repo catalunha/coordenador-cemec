@@ -30,7 +30,7 @@ class ResourceConnector extends StatelessWidget {
           // store.dispatch(RestartingStateTeacherAction());
           store.dispatch(SetTeacherCurrentTeacherAction(id: null));
         }
-        store.dispatch(ReadDocsResourceAction());
+        store.dispatch(StreamDocsResourceAction());
       },
       vm: () => ResourceFactory(this),
       builder: (context, vm) => ResourcePage(

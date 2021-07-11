@@ -27,6 +27,37 @@ class ReadDocsModuleAction extends ReduxAction<AppState> {
   }
 }
 
+class StreamDocsModuleAction extends ReduxAction<AppState> {
+  @override
+  Future<AppState?> reduce() async {
+    print('--> StreamDocsModuleAction');
+    FirebaseFirestore firebaseFirestore = FirebaseFirestore.instance;
+    Query<Map<String, dynamic>> collRef;
+    collRef = firebaseFirestore
+        .collection(ModuleModel.collection)
+        .where('courseId', isEqualTo: state.courseState.courseModelCurrent!.id)
+        .where('isDeleted', isEqualTo: false);
+
+    Stream<QuerySnapshot<Map<String, dynamic>>> streamQuerySnapshot =
+        collRef.snapshots();
+
+    Stream<List<ModuleModel>> streamList = streamQuerySnapshot.map(
+        (querySnapshot) => querySnapshot.docs
+            .map((docSnapshot) =>
+                ModuleModel.fromMap(docSnapshot.id, docSnapshot.data()))
+            .toList());
+    streamList.listen((List<ModuleModel> moduleModelList) {
+      dispatch(
+          SetModuleModelListModuleAction(moduleModelList: moduleModelList));
+    });
+    // BillState.billStream = streamList.listen((List<BillModel> billModelList) {
+    //   dispatch(SetBillListBillAction(billModelList: billModelList));
+    // });
+
+    return null;
+  }
+}
+
 class SetModuleModelListModuleAction extends ReduxAction<AppState> {
   final List<ModuleModel> moduleModelList;
 
@@ -78,9 +109,9 @@ class CreateDocModuleAction extends ReduxAction<AppState> {
   @override
   Future<AppState?> reduce() async {
     FirebaseFirestore firebaseFirestore = FirebaseFirestore.instance;
-    DocumentReference docRef =
-        firebaseFirestore.collection(ModuleModel.collection).doc();
-    await docRef.set(moduleModel.toMap());
+    CollectionReference docRef =
+        firebaseFirestore.collection(ModuleModel.collection);
+    await docRef.add(moduleModel.toMap()).then((docRef) => print(docRef));
     return null;
   }
 }
