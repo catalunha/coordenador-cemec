@@ -1,13 +1,14 @@
 import 'package:coordenador/app_state.dart';
 import 'package:coordenador/user/user_model.dart';
 import 'package:flutter/foundation.dart';
+import 'package:collection/collection.dart';
 
 class TeacherState {
   final UserModel? teacherCurrent;
   final List<UserModel>? teacherList;
   static UserModel? selectTeacher(AppState state, String teacherId) =>
       state.teacherState.teacherList!
-          .firstWhere((element) => element.id == teacherId, orElse: null);
+          .firstWhereOrNull((element) => element.id == teacherId);
   TeacherState({
     this.teacherCurrent,
     this.teacherList,

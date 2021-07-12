@@ -1,8 +1,8 @@
 import 'package:async_redux/async_redux.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:coordenador/app_state.dart';
-import 'package:coordenador/teacher/teacher_state.dart';
 import 'package:coordenador/user/user_model.dart';
+import 'package:collection/collection.dart';
 
 class ReadDocsTeacherAction extends ReduxAction<AppState> {
   @override
@@ -45,22 +45,23 @@ class SetTeacherCurrentTeacherAction extends ReduxAction<AppState> {
   @override
   AppState? reduce() {
     print('--> SetTeacherCurrentTeacherAction $id');
-    UserModel userModel;
+    UserModel? userModel;
     if (id != null && id!.isNotEmpty) {
       userModel = state.teacherState.teacherList!
-          .firstWhere((element) => element.id == id);
-      return state.copyWith(
-        teacherState: state.teacherState.copyWith(
-          teacherCurrent: userModel,
-        ),
-      );
-    } else {
-      return state.copyWith(
-        teacherState: state.teacherState.copyWith(
-          teacherCurrentNull: true,
-        ),
-      );
+          .firstWhereOrNull((element) => element.id == id);
+      if (userModel != null) {
+        return state.copyWith(
+          teacherState: state.teacherState.copyWith(
+            teacherCurrent: userModel,
+          ),
+        );
+      }
     }
+    return state.copyWith(
+      teacherState: state.teacherState.copyWith(
+        teacherCurrentNull: true,
+      ),
+    );
   }
 }
 

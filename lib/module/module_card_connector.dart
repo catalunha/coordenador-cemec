@@ -33,9 +33,13 @@ class ModuleCardFactory extends VmFactory<AppState, ModuleCardConnector> {
       );
 
   selectTeacher() {
+    print('--> buscando teacher 1');
     if (widget!.moduleModel.teacherUserId != null) {
-      return TeacherState.selectTeacher(
-          state, widget!.moduleModel.teacherUserId!);
+      print('--> buscando teacher 2 ${widget!.moduleModel.teacherUserId!}');
+      UserModel? temp =
+          TeacherState.selectTeacher(state, widget!.moduleModel.teacherUserId!);
+      print('--> buscando teacher 3');
+      return temp;
     }
     return null;
   }

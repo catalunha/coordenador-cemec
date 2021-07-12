@@ -48,7 +48,7 @@ class _ModulePageState extends State<ModulePage> {
                           ),
                     title: Text(widget.courseModel.title),
                     subtitle: Text(
-                        'Com ${widget.moduleModelList.length} ou ${widget.courseModel.moduleOrder!.length} môdulos.'),
+                        'Com ${widget.courseModel.moduleOrder!.length} môdulos.'),
                     // tileColor: Colors.green,
                   ),
                 ],
