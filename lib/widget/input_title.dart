@@ -25,7 +25,12 @@ class InputTitle extends StatelessWidget {
       padding: const EdgeInsets.only(top: 5, bottom: 5),
       child: Column(
         children: [
-          Text(label),
+          Container(
+            width: double.infinity,
+            alignment: Alignment.topCenter,
+            child: Text(label),
+            color: Colors.black12,
+          ),
           TextFormField(
             controller: controller,
             initialValue: initialValue,
@@ -56,11 +61,11 @@ class InputTitle extends StatelessWidget {
               border: InputBorder.none,
             ),
           ),
-          Divider(
-            height: 1,
-            thickness: 1,
-            color: AppColors.stroke,
-          ),
+          // Divider(
+          //   height: 1,
+          //   thickness: 1,
+          //   color: AppColors.stroke,
+          // ),
         ],
       ),
     );

@@ -19,7 +19,12 @@ class InputCheckBoxDelete extends StatelessWidget {
   Widget build(BuildContext context) {
     return Column(
       children: [
-        Text(title),
+        Container(
+          width: double.infinity,
+          alignment: Alignment.topCenter,
+          child: Text(title),
+          color: Colors.black12,
+        ),
         Row(
           mainAxisSize: MainAxisSize.min,
           children: [

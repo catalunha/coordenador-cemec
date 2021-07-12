@@ -26,7 +26,12 @@ class InputFile extends StatelessWidget {
       child: Column(
         // mainAxisSize: MainAxisSize.min,
         children: [
-          Text(label),
+          Container(
+            width: double.infinity,
+            alignment: Alignment.topCenter,
+            child: Text(label),
+            color: Colors.black12,
+          ),
           // Icon(Icons.find_in_page_outlined),
           Row(
             mainAxisSize: MainAxisSize.min,

@@ -1,4 +1,5 @@
 import 'package:coordenador/course/course_model.dart';
+import 'package:coordenador/theme/app_text_styles.dart';
 import 'package:flutter/material.dart';
 
 class CourseCard extends StatelessWidget {
@@ -32,17 +33,74 @@ class CourseCard extends StatelessWidget {
                       ),
                     ),
                   ),
-            title: Text('${courseModel.id}\n${courseModel.title}'),
-            subtitle: Text(
-                'Môdulos:${courseModel.moduleOrder?.length}\nEmenta:${courseModel.description}'),
+            title: Text('${courseModel.title}',
+                style: AppTextStyles.titleBoldHeading),
+            // subtitle: Text(
+            //     'Môdulos:${courseModel.moduleOrder?.length}\nEmenta:${courseModel.description}'),
+          ),
+          Padding(
+            padding: const EdgeInsets.only(left: 10),
+            child: Align(
+              alignment: Alignment.topLeft,
+              child: RichText(
+                text: TextSpan(
+                  style: DefaultTextStyle.of(context).style,
+                  children: [
+                    TextSpan(
+                        text: 'Descrição: ',
+                        style: AppTextStyles.captionBoldBody),
+                    TextSpan(
+                      text: '${courseModel.description}',
+                    )
+                  ],
+                ),
+              ),
+            ),
+          ),
+          Padding(
+            padding: const EdgeInsets.only(left: 10),
+            child: Align(
+              alignment: Alignment.topLeft,
+              child: RichText(
+                text: TextSpan(
+                  style: DefaultTextStyle.of(context).style,
+                  children: [
+                    TextSpan(
+                        text: 'Ementa: ', style: AppTextStyles.captionBoldBody),
+                    TextSpan(
+                      text: '${courseModel.syllabus}',
+                    )
+                  ],
+                ),
+              ),
+            ),
+          ),
+          Padding(
+            padding: const EdgeInsets.only(left: 10),
+            child: Align(
+              alignment: Alignment.topLeft,
+              child: RichText(
+                text: TextSpan(
+                  style: DefaultTextStyle.of(context).style,
+                  children: [
+                    TextSpan(
+                        text: 'Môdulos: ',
+                        style: AppTextStyles.captionBoldBody),
+                    TextSpan(
+                      text: '${courseModel.moduleOrder?.length}',
+                    )
+                  ],
+                ),
+              ),
+            ),
           ),
           Padding(
             padding: const EdgeInsets.only(left: 10),
             child: Align(
               alignment: Alignment.topLeft,
               child: Text(
-                courseModel.syllabus,
-                textAlign: TextAlign.start,
+                '${courseModel.id}',
+                // textAlign: TextAlign.start,
               ),
             ),
           ),

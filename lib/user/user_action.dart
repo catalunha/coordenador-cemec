@@ -31,23 +31,38 @@ class GetDocGoogleAccountUserAction extends ReduxAction<AppState> {
     var querySnapshot = await firebaseFirestore
         .collection(UserModel.collection)
         .where('uid', isEqualTo: uid)
-        .where('isActive', isEqualTo: true)
+        // .where('isActive', isEqualTo: true)
         .get();
-    var documentIdList = querySnapshot.docs
-        .map((queryDocumentSnapshot) => queryDocumentSnapshot.id)
+    var documentListMapIdData = querySnapshot.docs
+        .map((queryDocumentSnapshot) =>
+            {'${queryDocumentSnapshot.id}': queryDocumentSnapshot.data()})
         .toList();
-    print('--> GetDocUserAsyncUserAction: $documentIdList');
-    if (documentIdList.length == 1) {
-      String documentId = documentIdList[0];
-      await dispatch(UpdateDocWithGoogleAccountUserAction(id: documentId));
-      await dispatch(ReadDocUserUserAction(id: documentId));
-      return state.copyWith(
-        userState: state.userState.copyWith(
-          statusFirestoreUser: StatusFirestoreUser.inFirestore,
-        ),
-      );
+    print('--> GetDocUserAsyncUserAction: $documentListMapIdData');
+    if (documentListMapIdData.length == 1) {
+      Map<String, Map<String, dynamic>> documentMapIdData =
+          documentListMapIdData.first;
+      String documentId = documentMapIdData.keys.first;
+      Map<String, dynamic> documentData = documentMapIdData.values.first;
+      if (documentData['isActive'] == true) {
+        await dispatch(UpdateDocWithGoogleAccountUserAction(id: documentId));
+        await dispatch(ReadDocUserUserAction(id: documentId));
+        return state.copyWith(
+          userState: state.userState.copyWith(
+            statusFirestoreUser: StatusFirestoreUser.inFirestore,
+          ),
+        );
+      } else {
+        await dispatch(UpdateDocWithGoogleAccountUserAction(id: documentId));
+        dispatch(SignOutLoginAction());
+        return state.copyWith(
+          userState: state.userState.copyWith(
+            statusFirestoreUser: StatusFirestoreUser.outFirestore,
+          ),
+        );
+      }
     } else {
       print('--> GetDocUserAsyncUserAction: users NAO encontrado');
+      await dispatch(CreateDocWithGoogleAccountUserAction());
       dispatch(SignOutLoginAction());
       return state.copyWith(
         userState: state.userState.copyWith(
@@ -73,6 +88,7 @@ class ReadDocUserUserAction extends ReduxAction<AppState> {
         await docRef.get();
     UserModel userModel =
         UserModel.fromMap(documentSnapshot.id, documentSnapshot.data()!);
+
     return state.copyWith(
       userState: state.userState.copyWith(
         userCurrent: userModel,
@@ -80,6 +96,28 @@ class ReadDocUserUserAction extends ReduxAction<AppState> {
     );
   }
 }
+// class ReadDocUserUserAction extends ReduxAction<AppState> {
+//   final String id;
+
+//   ReadDocUserUserAction({required this.id});
+//   @override
+//   Future<AppState> reduce() async {
+//     dispatch(ChangeStatusFirestoreUserUserAction(
+//         statusFirestoreUser: StatusFirestoreUser.checkingInFirestore));
+//     FirebaseFirestore firebaseFirestore = FirebaseFirestore.instance;
+//     var docRef = firebaseFirestore.collection(UserModel.collection).doc(id);
+
+//     DocumentSnapshot<Map<String, dynamic>> documentSnapshot =
+//         await docRef.get();
+//     UserModel userModel =
+//         UserModel.fromMap(documentSnapshot.id, documentSnapshot.data()!);
+//     return state.copyWith(
+//       userState: state.userState.copyWith(
+//         userCurrent: userModel,
+//       ),
+//     );
+//   }
+// }
 
 class UpdateDocWithGoogleAccountUserAction extends ReduxAction<AppState> {
   final String id;
@@ -97,6 +135,27 @@ class UpdateDocWithGoogleAccountUserAction extends ReduxAction<AppState> {
     googleUser['phoneNumber'] = state.loginState.userFirebaseAuth!.phoneNumber;
     googleUser['email'] = state.loginState.userFirebaseAuth!.email;
     await docRef.update(googleUser);
+    return null;
+  }
+}
+
+class CreateDocWithGoogleAccountUserAction extends ReduxAction<AppState> {
+  CreateDocWithGoogleAccountUserAction();
+
+  @override
+  Future<AppState?> reduce() async {
+    FirebaseFirestore firebaseFirestore = FirebaseFirestore.instance;
+
+    CollectionReference docRef =
+        firebaseFirestore.collection(UserModel.collection);
+    Map<String, dynamic> googleUser = {};
+    googleUser['uid'] = state.loginState.userFirebaseAuth!.uid;
+    googleUser['displayName'] = state.loginState.userFirebaseAuth!.displayName;
+    googleUser['photoURL'] = state.loginState.userFirebaseAuth!.photoURL;
+    googleUser['phoneNumber'] = state.loginState.userFirebaseAuth!.phoneNumber;
+    googleUser['email'] = state.loginState.userFirebaseAuth!.email;
+    googleUser['isActive'] = false;
+    await docRef.add(googleUser);
     return null;
   }
 }

@@ -133,8 +133,8 @@ class SetCourseModelListCourseAction extends ReduxAction<AppState> {
     );
   }
 
-  void before() {
-    print('SetCourseModelListCourseAction.before');
+  void after() {
+    print('SetCourseModelListCourseAction.after');
     if (state.courseState.courseModelCurrent != null) {
       dispatch(SetCourseCurrentCourseAction(
           id: state.courseState.courseModelCurrent!.id));
