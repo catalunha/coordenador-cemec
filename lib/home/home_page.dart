@@ -68,24 +68,30 @@ class HomePage extends StatelessWidget {
       body: Column(
         mainAxisSize: MainAxisSize.min,
         children: [
-          Align(
-            alignment: Alignment.topRight,
-            child: Wrap(
-              children: [
-                IconButton(
-                    onPressed: () => Navigator.pushNamed(
-                          context,
-                          '/course_archived',
-                        ),
-                    icon: Icon(Icons.archive))
-              ],
+          Expanded(
+            flex: 1,
+            child: Align(
+              alignment: Alignment.topRight,
+              child: Wrap(
+                children: [
+                  IconButton(
+                      onPressed: () => Navigator.pushNamed(
+                            context,
+                            '/course_archived',
+                          ),
+                      icon: Icon(Icons.archive))
+                ],
+              ),
             ),
           ),
-          SingleChildScrollView(
-            child: Column(
-              children: courseModelList
-                  .map((e) => CourseCard(courseModel: e))
-                  .toList(),
+          Expanded(
+            flex: 15,
+            child: SingleChildScrollView(
+              child: Column(
+                children: courseModelList
+                    .map((e) => CourseCard(courseModel: e))
+                    .toList(),
+              ),
             ),
           ),
         ],
