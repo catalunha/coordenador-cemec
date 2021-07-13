@@ -39,11 +39,9 @@ class ModuleAddEditFactory extends VmFactory<AppState, ModuleAddEditConnector> {
         formController:
             FormController(moduleModel: state.moduleState.moduleModelCurrent!),
         onSave: (ModuleModel moduleModel) {
-          print(moduleModel);
           moduleModel = moduleModel.copyWith(
               courseId: state.courseState.courseModelCurrent!.id);
           if (state.teacherState.teacherCurrent != null) {
-            print(state.teacherState.teacherCurrent!.id);
             moduleModel = moduleModel.copyWith(
                 teacherUserId: state.teacherState.teacherCurrent!.id);
           } else {
@@ -90,7 +88,6 @@ class FormController {
       syllabus: syllabus,
       isDeleted: isDeleted,
     );
-    print('==--> FormController.onChange: $moduleModel');
   }
 
   void onCkechValidation() async {

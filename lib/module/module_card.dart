@@ -13,7 +13,6 @@ class ModuleCard extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    print('---> $teacher');
     return Card(
       elevation: 10,
       child: Column(

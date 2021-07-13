@@ -100,7 +100,6 @@ class UpdateUrlForDownloadUploadAction extends ReduxAction<AppState> {
 
 class StreamUploadTask extends ReduxAction<AppState> {
   Future<AppState?> reduce() async {
-    print('StreamUploadTask');
     if (state.uploadState.uploadTask != null) {
       UploadTask uploadTask = state.uploadState.uploadTask!;
       Stream<TaskSnapshot> streamTaskSnapshot = uploadTask.snapshotEvents;
@@ -132,9 +131,7 @@ class UploadForFirebase {
     );
     if (pickFile?.files.first == null) return false;
     _choiceEnviroment();
-
     print('$fileName');
-    print('$fileBytes');
     return true;
   }
 
@@ -152,7 +149,6 @@ class UploadForFirebase {
     this.fileBytes = pickFile!.files.first.bytes;
     this.fileName = pickFile!.files.first.name;
     print('$fileName');
-    print('$fileBytes');
   }
 
   void _fileInAndroid() async {
@@ -162,7 +158,6 @@ class UploadForFirebase {
     this.fileBytes = file!.readAsBytesSync();
     this.fileName = basename(file!.path);
     print('$fileName');
-    print('$fileBytes');
   }
 
   UploadTask? uploadingFile(File file, String pathInFirestore) {
@@ -173,8 +168,7 @@ class UploadForFirebase {
       final ref = FirebaseStorage.instance.ref(destination);
       task = ref.putFile(file);
     } on FirebaseException catch (e) {
-      print('--> uploadingFil error $e');
-
+      print('--> uploadingFile error $e');
       return null;
     }
     if (task == null) return null;

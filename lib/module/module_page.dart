@@ -93,10 +93,7 @@ class _ModulePageState extends State<ModulePage> {
       key: (element) => element.id,
       value: (element) => element,
     );
-    print('-> tamanho do ${map.length}');
-    print('-> tamanho do ${widget.courseModel.moduleOrder!.length}');
     for (var index in widget.courseModel.moduleOrder!) {
-      print('$index');
       if (map[index] != null) {
         list.add(Container(
             key: ValueKey(index),

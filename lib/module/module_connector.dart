@@ -40,7 +40,6 @@ class ModuleFactory extends VmFactory<AppState, ModuleConnector> {
         courseModel: state.courseState.courseModelCurrent!,
         moduleModelList: state.moduleState.moduleModelList!,
         onChangeModuleOrder: (List<String> moduleOrder) {
-          print('onChangeModuleOrder');
           CourseModel courseModel = state.courseState.courseModelCurrent!;
           courseModel = courseModel.copyWith(moduleOrder: moduleOrder);
           dispatch(UpdateDocCourseAction(courseModel: courseModel));

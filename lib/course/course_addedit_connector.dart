@@ -40,8 +40,6 @@ class CourseAddEditFactory extends VmFactory<AppState, CourseAddEditConnector> {
         formController:
             FormController(courseModel: state.courseState.courseModelCurrent!),
         onSave: (CourseModel courseModel) {
-          print(state.userState.userCurrent!.id);
-          print(courseModel);
           courseModel = courseModel.copyWith(
               coordinatorUserId: state.userState.userCurrent!.id);
           if (state.uploadState.urlForDownload != null &&
@@ -49,7 +47,6 @@ class CourseAddEditFactory extends VmFactory<AppState, CourseAddEditConnector> {
             courseModel =
                 courseModel.copyWith(iconUrl: state.uploadState.urlForDownload);
           }
-          print(courseModel);
           if (widget!.addOrEditId.isEmpty) {
             dispatch(CreateDocCourseAction(courseModel: courseModel));
           } else {
