@@ -15,7 +15,6 @@ class ModuleCard extends StatelessWidget {
   Widget build(BuildContext context) {
     print('---> $teacher');
     return Card(
-      // key: ValueKey(moduleModel),
       elevation: 10,
       child: Column(
         mainAxisSize: MainAxisSize.min,
@@ -31,16 +30,11 @@ class ModuleCard extends StatelessWidget {
                 Text('${moduleModel.title}', style: AppTextStyles.trailingBold),
             color: Colors.blue.shade50,
           ),
-
           teacher != null
               ? TeacherCard(teacher: teacher!)
               : ListTile(
                   leading: Icon(Icons.person_off_outlined),
                 ),
-          // ListTile(
-          //   title: Text('${moduleModel.id}\n${moduleModel.title}'),
-          //   subtitle: Text('${moduleModel.description}'),
-          // ),
           Padding(
             padding: const EdgeInsets.only(left: 10),
             child: Align(

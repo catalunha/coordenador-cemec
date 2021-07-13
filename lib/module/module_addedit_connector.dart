@@ -16,7 +16,6 @@ class ModuleAddEditConnector extends StatelessWidget {
     return StoreConnector<AppState, ModuleAddEditViewModel>(
       onInit: (store) {
         store.dispatch(SetModuleCurrentModuleAction(id: addOrEditId));
-        // store.dispatch(RestartingStateTeacherAction());
         store.dispatch(SetTeacherCurrentTeacherAction(id: null));
         if (addOrEditId.isNotEmpty &&
             store.state.moduleState.moduleModelCurrent!.teacherUserId != null) {
@@ -24,7 +23,6 @@ class ModuleAddEditConnector extends StatelessWidget {
               id: store.state.moduleState.moduleModelCurrent!.teacherUserId!));
         }
       },
-      // onDispose: (store) => store.dispatch(ReadDocsModuleAction()),
       vm: () => ModuleAddEditFactory(this),
       builder: (context, vm) => ModuleAddEditPage(
         formController: vm.formController,
@@ -61,15 +59,12 @@ class ModuleAddEditFactory extends VmFactory<AppState, ModuleAddEditConnector> {
 }
 
 class ModuleAddEditViewModel extends Vm {
-  // final ModuleModel courseModel;
   final FormController formController;
   final Function(ModuleModel) onSave;
   ModuleAddEditViewModel({
-    // required this.courseModel,
     required this.formController,
     required this.onSave,
   }) : super(equals: [
-          // courseModel,
           formController,
         ]);
 }

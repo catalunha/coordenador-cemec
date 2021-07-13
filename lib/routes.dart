@@ -27,14 +27,4 @@ class Routes {
           moduleId: ModalRoute.of(context)!.settings.arguments.toString(),
         ),
   };
-  // static onGenerateRoute(RouteSettings settings) {
-  //   var routes2 = <String, WidgetBuilder>{
-  //     '/': ( context) => SplashConnector(),
-  //     '/login': ( context) => LoginConnector(),
-  //     '/home': ( context) => HomePageConnector(),
-  //     '/course_addedit': ( context) =>
-  //         CourseAddEditConnector(addOrEditId: settings.arguments.toString()),
-  //   };
-  //   WidgetBuilder builder = routes2[settings.name];
-  // }
 }

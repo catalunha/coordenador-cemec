@@ -40,8 +40,6 @@ class InputDescription extends StatelessWidget {
             keyboardType: TextInputType.multiline,
             maxLines: 5,
             decoration: InputDecoration(
-              // contentPadding: EdgeInsets.zero,
-              // labelText: label,
               labelStyle: AppTextStyles.input,
               icon: Row(
                 mainAxisSize: MainAxisSize.min,
@@ -63,11 +61,6 @@ class InputDescription extends StatelessWidget {
               border: InputBorder.none,
             ),
           ),
-          // Divider(
-          //   height: 1,
-          //   thickness: 1,
-          //   color: AppColors.stroke,
-          // ),
         ],
       ),
     );

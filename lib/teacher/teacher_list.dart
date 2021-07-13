@@ -32,16 +32,5 @@ class TeacherList extends StatelessWidget {
         ),
       ],
     );
-
-    // Scaffold(
-    //   appBar: AppBar(
-    //     title: Text('Selecione um professor'),
-    //   ),
-    //   body: SingleChildScrollView(
-    //     child: Column(
-    //       children: teacherList.map((e) => TeacherCard(teacher: e)).toList(),
-    //     ),
-    //   ),
-    // );
   }
 }

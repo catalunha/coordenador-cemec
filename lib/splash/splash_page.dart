@@ -34,8 +34,6 @@ class SplashPage extends StatelessWidget {
           Column(
             mainAxisAlignment: MainAxisAlignment.center,
             children: [
-              // CircularProgressIndicator(),
-              // Center(child: Image.asset(AppImages.logoFull)),
               isUnInitialized
                   ? Text('unInitialized: true')
                   : Text('unInitialized: false'),

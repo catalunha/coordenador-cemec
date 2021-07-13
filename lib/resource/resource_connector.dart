@@ -27,7 +27,6 @@ class ResourceConnector extends StatelessWidget {
           store.dispatch(SetTeacherCurrentTeacherAction(
               id: store.state.moduleState.moduleModelCurrent!.teacherUserId!));
         } else {
-          // store.dispatch(RestartingStateTeacherAction());
           store.dispatch(SetTeacherCurrentTeacherAction(id: null));
         }
         store.dispatch(StreamDocsResourceAction());

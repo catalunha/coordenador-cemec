@@ -40,16 +40,20 @@ class _ModulePageState extends State<ModulePage> {
                   ListTile(
                     leading: widget.courseModel.iconUrl == null
                         ? Icon(Icons.favorite_outline_rounded)
-                        : CircleAvatar(
-                            // radius: 20,
-                            child: Image.network(
-                                widget.courseModel.iconUrl!.toString()),
-                            backgroundColor: Colors.transparent,
+                        : Container(
+                            height: 48,
+                            width: 48,
+                            decoration: BoxDecoration(
+                              borderRadius: BorderRadius.circular(5),
+                              image: DecorationImage(
+                                image:
+                                    NetworkImage(widget.courseModel.iconUrl!),
+                              ),
+                            ),
                           ),
                     title: Text(widget.courseModel.title),
                     subtitle: Text(
                         'Com ${widget.courseModel.moduleOrder!.length} môdulos.'),
-                    // tileColor: Colors.green,
                   ),
                 ],
               ),
@@ -98,19 +102,12 @@ class _ModulePageState extends State<ModulePage> {
             key: ValueKey(index),
             child: ModuleCardConnector(moduleModel: map[index]!)));
       }
-      // list.add(
-      //   ListTile(
-      //     key: ValueKey(index),
-      //     title: Text('$index'),
-      //   ),
-      // );
     }
     setState(() {});
     return list;
   }
 
   void _onReorder(int oldIndex, int newIndex) {
-    //print('oldIndex:$oldIndex | newIndex:$newIndex');
     setState(() {
       if (newIndex > oldIndex) {
         newIndex -= 1;
@@ -120,9 +117,6 @@ class _ModulePageState extends State<ModulePage> {
     String moduleId = moduleOrderTemp[oldIndex];
     moduleOrderTemp.removeAt(oldIndex);
     moduleOrderTemp.insert(newIndex, moduleId);
-    // var index = 1;
-    // List<String> moduleModelListOrderned =
-    //     _moduleModelList.map((e) => e.id).toList();
     widget.onChangeModuleOrder(moduleOrderTemp);
   }
 }

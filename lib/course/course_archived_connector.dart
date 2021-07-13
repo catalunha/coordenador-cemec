@@ -13,8 +13,6 @@ class CourseArchivedConnector extends StatelessWidget {
   Widget build(BuildContext context) {
     return StoreConnector<AppState, HomeViewModel>(
       vm: () => HomeViewModelFactory(this),
-      // onInit: (store) => store.dispatch(ReadDocsCourseAction()),
-      // onDispose: (store) => store.dispatch(ReadDocsCourseAction()),
       builder: (context, vm) => CourseArchivedPage(
         courseModelList: vm.courseModelList,
         unArchived: vm.unArchived,

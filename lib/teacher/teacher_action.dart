@@ -64,10 +64,3 @@ class SetTeacherCurrentTeacherAction extends ReduxAction<AppState> {
     );
   }
 }
-
-// class RestartingStateTeacherAction extends ReduxAction<AppState> {
-//   RestartingStateTeacherAction();
-//   AppState reduce() {
-//     return state.copyWith(teacherState: state.teacherState.copyWith());
-//   }
-// }

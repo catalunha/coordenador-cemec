@@ -32,7 +32,6 @@ class TeacherSearch extends StatelessWidget {
                 color: AppColors.primary,
               ),
             ),
-            // Icon(Icons.find_in_page_outlined),
             Container(
               width: 1,
               height: 48,

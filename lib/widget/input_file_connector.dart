@@ -1,5 +1,4 @@
 import 'package:coordenador/widget/input_file.dart';
-import 'package:path/path.dart';
 import 'package:flutter/material.dart';
 import 'package:async_redux/async_redux.dart';
 import 'package:coordenador/app_state.dart';

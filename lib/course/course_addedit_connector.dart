@@ -24,7 +24,6 @@ class CourseAddEditConnector extends StatelessWidget {
               url: store.state.courseState.courseModelCurrent!.iconUrl!));
         }
       },
-      // onDispose: (store) => store.dispatch(ReadDocsCourseAction()),
       vm: () => CourseAddEditFactory(this),
       builder: (context, vm) => CourseAddEditPage(
         formController: vm.formController,
@@ -61,15 +60,12 @@ class CourseAddEditFactory extends VmFactory<AppState, CourseAddEditConnector> {
 }
 
 class CourseAddEditViewModel extends Vm {
-  // final CourseModel courseModel;
   final FormController formController;
   final Function(CourseModel) onSave;
   CourseAddEditViewModel({
-    // required this.courseModel,
     required this.formController,
     required this.onSave,
   }) : super(equals: [
-          // courseModel,
           formController,
         ]);
 }

@@ -31,7 +31,6 @@ class GetDocGoogleAccountUserAction extends ReduxAction<AppState> {
     var querySnapshot = await firebaseFirestore
         .collection(UserModel.collection)
         .where('uid', isEqualTo: uid)
-        // .where('isActive', isEqualTo: true)
         .get();
     var documentListMapIdData = querySnapshot.docs
         .map((queryDocumentSnapshot) =>
@@ -96,28 +95,6 @@ class ReadDocUserUserAction extends ReduxAction<AppState> {
     );
   }
 }
-// class ReadDocUserUserAction extends ReduxAction<AppState> {
-//   final String id;
-
-//   ReadDocUserUserAction({required this.id});
-//   @override
-//   Future<AppState> reduce() async {
-//     dispatch(ChangeStatusFirestoreUserUserAction(
-//         statusFirestoreUser: StatusFirestoreUser.checkingInFirestore));
-//     FirebaseFirestore firebaseFirestore = FirebaseFirestore.instance;
-//     var docRef = firebaseFirestore.collection(UserModel.collection).doc(id);
-
-//     DocumentSnapshot<Map<String, dynamic>> documentSnapshot =
-//         await docRef.get();
-//     UserModel userModel =
-//         UserModel.fromMap(documentSnapshot.id, documentSnapshot.data()!);
-//     return state.copyWith(
-//       userState: state.userState.copyWith(
-//         userCurrent: userModel,
-//       ),
-//     );
-//   }
-// }
 
 class UpdateDocWithGoogleAccountUserAction extends ReduxAction<AppState> {
   final String id;

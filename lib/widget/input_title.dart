@@ -38,8 +38,6 @@ class InputTitle extends StatelessWidget {
             onChanged: onChanged,
             style: AppTextStyles.input,
             decoration: InputDecoration(
-              // contentPadding: EdgeInsets.zero,
-              // labelText: label,
               labelStyle: AppTextStyles.input,
               icon: Row(
                 mainAxisSize: MainAxisSize.min,

@@ -15,7 +15,6 @@ class HomePageConnector extends StatelessWidget {
   Widget build(BuildContext context) {
     return StoreConnector<AppState, HomeViewModel>(
       vm: () => HomeViewModelFactory(this),
-      // onInit: (store) => store.dispatch(ReadDocsCourseAction()),
       onInit: (store) => store.dispatch(StreamDocsCourseAction()),
       builder: (context, vm) => HomePage(
         signOut: vm.signOut,

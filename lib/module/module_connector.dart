@@ -44,7 +44,6 @@ class ModuleFactory extends VmFactory<AppState, ModuleConnector> {
           CourseModel courseModel = state.courseState.courseModelCurrent!;
           courseModel = courseModel.copyWith(moduleOrder: moduleOrder);
           dispatch(UpdateDocCourseAction(courseModel: courseModel));
-          // dispatch(ReadDocsCourseAction());
         },
       );
 }

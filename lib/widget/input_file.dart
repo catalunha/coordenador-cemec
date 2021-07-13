@@ -24,7 +24,6 @@ class InputFile extends StatelessWidget {
     return Padding(
       padding: const EdgeInsets.only(top: 5, bottom: 5),
       child: Column(
-        // mainAxisSize: MainAxisSize.min,
         children: [
           Container(
             width: double.infinity,
@@ -32,10 +31,8 @@ class InputFile extends StatelessWidget {
             child: Text(label),
             color: Colors.black12,
           ),
-          // Icon(Icons.find_in_page_outlined),
           Row(
             mainAxisSize: MainAxisSize.min,
-            // mainAxisAlignment: MainAxisAlignment.start,
             children: [
               Padding(
                 padding: const EdgeInsets.symmetric(horizontal: 8),
@@ -88,7 +85,6 @@ class InputFile extends StatelessWidget {
               ),
             ],
           ),
-
           Divider(
             height: 1,
             thickness: 1,

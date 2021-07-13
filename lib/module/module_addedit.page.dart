@@ -1,7 +1,6 @@
 import 'package:coordenador/module/module_addedit_connector.dart';
 import 'package:coordenador/module/module_model.dart';
 import 'package:coordenador/teacher/teacher_search_connector.dart';
-import 'package:coordenador/widget/input_checkbox.dart';
 import 'package:coordenador/widget/input_checkboxDelete.dart';
 import 'package:coordenador/widget/input_description.dart';
 import 'package:coordenador/widget/input_title.dart';
@@ -44,7 +43,6 @@ class _ModuleAddEditPageState extends State<ModuleAddEditPage> {
                   label: 'Título do môdulo',
                   initialValue: formController.moduleModel.title,
                   validator: formController.validateRequiredText,
-                  // icon: Icons.text_format,
                   onChanged: (value) {
                     formController.onChange(title: value);
                   },
@@ -53,7 +51,6 @@ class _ModuleAddEditPageState extends State<ModuleAddEditPage> {
                   label: 'Descrição do môdulo',
                   initialValue: formController.moduleModel.description,
                   validator: formController.validateRequiredText,
-                  // icon: Icons.text_snippet_outlined,
                   onChanged: (value) {
                     formController.onChange(description: value);
                   },
@@ -62,7 +59,6 @@ class _ModuleAddEditPageState extends State<ModuleAddEditPage> {
                   label: 'Ementa do môdulo',
                   initialValue: formController.moduleModel.syllabus,
                   validator: formController.validateRequiredText,
-                  // icon: Icons.text_snippet_outlined,
                   onChanged: (value) {
                     formController.onChange(syllabus: value);
                   },

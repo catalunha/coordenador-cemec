@@ -30,7 +30,6 @@ class TeacherSearchFactory extends VmFactory<AppState, TeacherSearchConnector> {
   TeacherSearchViewModel fromStore() => TeacherSearchViewModel(
         teacher: state.teacherState.teacherCurrent,
         onDeleteTeacher: () {
-          // dispatch(RestartingStateTeacherAction());
           dispatch(SetTeacherCurrentTeacherAction(id: null));
         },
       );

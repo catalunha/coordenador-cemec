@@ -17,16 +17,10 @@ class CourseCard extends StatelessWidget {
           ListTile(
             leading: courseModel.iconUrl == null
                 ? Icon(Icons.favorite_outline_rounded)
-                // : CircleAvatar(
-                //     // radius: 20,
-                //     child: Image.network(courseModel.iconUrl!.toString()),
-                //     backgroundColor: Colors.black26,
-                //   ),
                 : Container(
                     height: 48,
                     width: 48,
                     decoration: BoxDecoration(
-                      color: Colors.black26,
                       borderRadius: BorderRadius.circular(5),
                       image: DecorationImage(
                         image: NetworkImage(courseModel.iconUrl!),
@@ -35,8 +29,6 @@ class CourseCard extends StatelessWidget {
                   ),
             title: Text('${courseModel.title}',
                 style: AppTextStyles.titleBoldHeading),
-            // subtitle: Text(
-            //     'Môdulos:${courseModel.moduleOrder?.length}\nEmenta:${courseModel.description}'),
           ),
           Padding(
             padding: const EdgeInsets.only(left: 10),
@@ -100,7 +92,6 @@ class CourseCard extends StatelessWidget {
               alignment: Alignment.topLeft,
               child: Text(
                 '${courseModel.id}',
-                // textAlign: TextAlign.start,
               ),
             ),
           ),

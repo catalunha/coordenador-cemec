@@ -42,12 +42,6 @@ class InputCheckBox extends StatelessWidget {
             ),
             Expanded(
               child: CheckboxListTile(
-                // checkColor: AppColors.delete,
-                // activeColor: AppColors.delete,
-                // selectedTileColor: AppColors.delete,
-                // secondary: Icon(Icons.delete_forever_outlined),
-                // selected: value!,
-                // controlAffinity: ListTileControlAffinity.leading,
                 title: Text(subtitle),
                 onChanged: onChanged,
                 value: value,

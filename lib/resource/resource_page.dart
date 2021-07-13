@@ -37,23 +37,18 @@ class ResourcePage extends StatelessWidget {
               elevation: 10,
               child: Column(
                 children: [
-                  // Padding(
-                  //   padding: const EdgeInsets.only(left: 10.0),
-                  //   child: Align(
-                  //     alignment: Alignment.topLeft,
-                  //     child: Text(
-                  //       'Curso:',
-                  //     ),
-                  //   ),
-                  // ),
                   ListTile(
                     leading: courseModel.iconUrl == null
                         ? Icon(Icons.favorite_outline_rounded)
-                        : CircleAvatar(
-                            // radius: 20,
-                            child:
-                                Image.network(courseModel.iconUrl!.toString()),
-                            backgroundColor: Colors.transparent,
+                        : Container(
+                            height: 48,
+                            width: 48,
+                            decoration: BoxDecoration(
+                              borderRadius: BorderRadius.circular(5),
+                              image: DecorationImage(
+                                image: NetworkImage(courseModel.iconUrl!),
+                              ),
+                            ),
                           ),
                     title: Text(
                       courseModel.title,
@@ -73,15 +68,6 @@ class ResourcePage extends StatelessWidget {
               color: Colors.lightBlueAccent,
               child: Column(
                 children: [
-                  // Padding(
-                  //   padding: const EdgeInsets.only(left: 10.0),
-                  //   child: Align(
-                  //     alignment: Alignment.topLeft,
-                  //     child: Text(
-                  //       'Môdulo:',
-                  //     ),
-                  //   ),
-                  // ),
                   Text(
                     moduleModel.title,
                     style: AppTextStyles.titleBoldHeading,
@@ -92,16 +78,19 @@ class ResourcePage extends StatelessWidget {
                                   teacher!.photoURL == null ||
                                   teacher!.photoURL!.isEmpty
                               ? Icon(Icons.favorite_outline_rounded)
-                              : CircleAvatar(
-                                  // radius: 20,
-                                  child: Image.network(
-                                      teacher!.photoURL.toString()),
-                                  backgroundColor: Colors.transparent,
+                              : Container(
+                                  height: 48,
+                                  width: 48,
+                                  decoration: BoxDecoration(
+                                    borderRadius: BorderRadius.circular(5),
+                                    image: DecorationImage(
+                                      image: NetworkImage(teacher!.photoURL!),
+                                    ),
+                                  ),
                                 ),
                           title: Text('${teacher!.displayName}'),
                           subtitle: Text(
                               'email: ${teacher!.email}\nMobile:${teacher!.phoneNumber}'),
-                          // tileColor: Colors.cyan,
                         )
                       : Container(),
                 ],

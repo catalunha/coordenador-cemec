@@ -11,8 +11,6 @@ final navigatorKey = GlobalKey<NavigatorState>();
 Future<void> main() async {
   WidgetsFlutterBinding.ensureInitialized();
   await Firebase.initializeApp();
-  // Intl.defaultLocale = 'pt_BR';
-  // initializeDateFormatting();
   store = Store<AppState>(initialState: AppState.initialState());
   NavigateAction.setNavigatorKey(navigatorKey);
   runApp(MyApp());
@@ -31,7 +29,6 @@ class MyApp extends StatelessWidget {
         ),
         navigatorKey: navigatorKey,
         routes: Routes.routes,
-        // onGenerateRoute: ,
         initialRoute: '/',
       ),
     );
