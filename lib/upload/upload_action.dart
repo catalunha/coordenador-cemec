@@ -33,6 +33,7 @@ class SelectFileUploadAction extends ReduxAction<AppState> {
     dispatch(RestartingStateUploadAction());
     UploadForFirebase uploadFirebase = UploadForFirebase();
     bool status = await uploadFirebase.selectFile();
+
     if (status) {
       return state.copyWith(
         uploadState: state.uploadState.copyWith(
