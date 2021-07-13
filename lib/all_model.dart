@@ -10,7 +10,7 @@ class UserModel {
 }
 
 class CourseModel {
-  late final String coordinatorUserId; // User.id
+  late final String userId; // User.id
   late final String title;
   late final String description;
   late final String syllabus;
@@ -19,6 +19,7 @@ class CourseModel {
   late final bool isArchivedByAdm; //for adm use
   late final bool isArchivedByCoord; //for coord use
   late final bool isDeleted; //for coord use
+  late final List<String>? teacherList;
   late final List<String>? moduleOrder;
 }
 

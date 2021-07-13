@@ -38,3 +38,7 @@ https://medium.com/flutterdevs/reorderable-listview-in-flutter-731324f0677b
 https://www.kindacode.com/article/working-with-reorderablelistview-in-flutter/
 https://developer.school/building-a-top-ten-list-using-reorderablelistview-to-reorder-list-items/
 
+# obs da reuniao 
+* Colocar o nome coord no home.
+* remover e arquivar nao pode aparecer no criar curso
+* cada curso tem uma lista especifica de professores para aquele curso.

@@ -14,7 +14,7 @@ class SetCourseCurrentCourseAction extends ReduxAction<AppState> {
     print('--> SetCourseCurrentCourseAction $id');
     CourseModel courseModel = CourseModel(
       '',
-      coordinatorUserId: '',
+      userId: '',
       title: '',
       description: '',
       syllabus: '',
@@ -72,7 +72,7 @@ class ReadDocsCourseAction extends ReduxAction<AppState> {
     FirebaseFirestore firebaseFirestore = FirebaseFirestore.instance;
     QuerySnapshot<Map<String, dynamic>> querySnapshot = await firebaseFirestore
         .collection(CourseModel.collection)
-        .where('coordinatorUserId', isEqualTo: state.userState.userCurrent!.id)
+        .where('userId', isEqualTo: state.userState.userCurrent!.id)
         .where('isDeleted', isEqualTo: false)
         .get();
     List<CourseModel> courseModelList = querySnapshot.docs
@@ -96,7 +96,7 @@ class StreamDocsCourseAction extends ReduxAction<AppState> {
     Query<Map<String, dynamic>> collRef;
     collRef = firebaseFirestore
         .collection(CourseModel.collection)
-        .where('coordinatorUserId', isEqualTo: state.userState.userCurrent!.id)
+        .where('userId', isEqualTo: state.userState.userCurrent!.id)
         .where('isDeleted', isEqualTo: false);
 
     Stream<QuerySnapshot<Map<String, dynamic>>> streamQuerySnapshot =
