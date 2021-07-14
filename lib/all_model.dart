@@ -10,7 +10,9 @@ class UserModel {
 }
 
 class CourseModel {
-  late final String userId; // User.id
+  static final String collection = 'courses';
+
+  late final String coordinatorUserId; // User.id
   late final String title;
   late final String description;
   late final String syllabus;
@@ -24,6 +26,8 @@ class CourseModel {
 }
 
 class ModuleModel {
+  static final String collection = 'modules';
+
   late final String courseId;
   late final String title;
   late final String description;
@@ -35,6 +39,7 @@ class ModuleModel {
 }
 
 class ResourceModel {
+  static final String collection = 'resources';
   late final String moduleId;
   late final String title;
   late final String description;
@@ -42,7 +47,7 @@ class ResourceModel {
 }
 
 class MensagemModel {
-  late final String userId;
+  late final String coordinatorUserId;
   late final String title;
   late final String description;
   late final DateTime created;
@@ -51,7 +56,9 @@ class MensagemModel {
 }
 
 class Student {
-  late final String userId;
+  static final String collection = 'students';
+
+  late final String coordinatorUserId;
   late final String courseId;
   late final bool isBlocked; //for adm use
   late final bool isArchived; //for student use

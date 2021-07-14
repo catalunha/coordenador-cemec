@@ -42,7 +42,11 @@ class GetDocGoogleAccountUserAction extends ReduxAction<AppState> {
           documentListMapIdData.first;
       String documentId = documentMapIdData.keys.first;
       Map<String, dynamic> documentData = documentMapIdData.values.first;
-      if (documentData['isActive'] == true) {
+      // print(documentData['isActive'] == true);
+      // print(documentData['appList'] != null);
+      // print(documentData['appList'].contains('coordinator'));
+      if (documentData['isActive'] == true &&
+          documentData['appList'].contains('coordinator')) {
         await dispatch(UpdateDocWithGoogleAccountUserAction(id: documentId));
         await dispatch(ReadDocUserUserAction(id: documentId));
         return state.copyWith(
@@ -132,6 +136,7 @@ class CreateDocWithGoogleAccountUserAction extends ReduxAction<AppState> {
     googleUser['phoneNumber'] = state.loginState.userFirebaseAuth!.phoneNumber;
     googleUser['email'] = state.loginState.userFirebaseAuth!.email;
     googleUser['isActive'] = false;
+    googleUser['appList'] = [];
     await docRef.add(googleUser);
     return null;
   }

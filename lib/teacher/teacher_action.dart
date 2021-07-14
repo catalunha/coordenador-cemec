@@ -8,8 +8,10 @@ class ReadDocsTeacherAction extends ReduxAction<AppState> {
   @override
   Future<AppState?> reduce() async {
     FirebaseFirestore firebaseFirestore = FirebaseFirestore.instance;
-    QuerySnapshot<Map<String, dynamic>> querySnapshot =
-        await firebaseFirestore.collection(UserModel.collection).get();
+    QuerySnapshot<Map<String, dynamic>> querySnapshot = await firebaseFirestore
+        .collection(UserModel.collection)
+        .where('appList', arrayContains: 'teacher')
+        .get();
     List<UserModel> teacherList = querySnapshot.docs
         .map(
           (queryDocumentSnapshot) => UserModel.fromMap(

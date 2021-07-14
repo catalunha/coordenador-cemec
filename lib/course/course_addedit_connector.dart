@@ -40,8 +40,8 @@ class CourseAddEditFactory extends VmFactory<AppState, CourseAddEditConnector> {
         formController:
             FormController(courseModel: state.courseState.courseModelCurrent!),
         onSave: (CourseModel courseModel) {
-          courseModel =
-              courseModel.copyWith(userId: state.userState.userCurrent!.id);
+          courseModel = courseModel.copyWith(
+              coordinatorUserId: state.userState.userCurrent!.id);
           if (state.uploadState.urlForDownload != null &&
               state.uploadState.urlForDownload!.isNotEmpty) {
             courseModel =

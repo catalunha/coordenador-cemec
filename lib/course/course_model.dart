@@ -7,7 +7,7 @@ import 'package:coordenador/firestore/firestore_model.dart';
 class CourseModel extends FirestoreModel {
   static final String collection = 'courses';
 
-  final String userId; // coordinator User.id
+  final String coordinatorUserId; // coordinator User.id
   final String title;
   final String description;
   final String syllabus;
@@ -22,7 +22,7 @@ class CourseModel extends FirestoreModel {
 
   CourseModel(
     String id, {
-    required this.userId,
+    required this.coordinatorUserId,
     required this.title,
     required this.description,
     required this.syllabus,
@@ -36,7 +36,7 @@ class CourseModel extends FirestoreModel {
   }) : super(id);
 
   CourseModel copyWith({
-    String? userId,
+    String? coordinatorUserId,
     String? title,
     String? description,
     String? syllabus,
@@ -50,7 +50,7 @@ class CourseModel extends FirestoreModel {
   }) {
     return CourseModel(
       this.id,
-      userId: userId ?? this.userId,
+      coordinatorUserId: coordinatorUserId ?? this.coordinatorUserId,
       title: title ?? this.title,
       description: description ?? this.description,
       syllabus: syllabus ?? this.syllabus,
@@ -66,7 +66,7 @@ class CourseModel extends FirestoreModel {
 
   Map<String, dynamic> toMap() {
     return {
-      'userId': userId,
+      'coordinatorUserId': coordinatorUserId,
       'title': title,
       'description': description,
       'syllabus': syllabus,
@@ -83,7 +83,7 @@ class CourseModel extends FirestoreModel {
   factory CourseModel.fromMap(String id, Map<String, dynamic> map) {
     return CourseModel(
       id,
-      userId: map['userId'],
+      coordinatorUserId: map['coordinatorUserId'],
       title: map['title'],
       description: map['description'],
       syllabus: map['syllabus'],
@@ -107,7 +107,7 @@ class CourseModel extends FirestoreModel {
 
   @override
   String toString() {
-    return 'CourseModel(userId: $userId, title: $title, description: $description, syllabus: $syllabus, iconUrl: $iconUrl, isArchivedByAdm: $isArchivedByAdm, isArchivedByCoord: $isArchivedByCoord, isDeleted: $isDeleted,isActive: $isActive, moduleOrder: $moduleOrder, collegiate: $collegiate)';
+    return 'CourseModel(coordinatorUserId: $coordinatorUserId, title: $title, description: $description, syllabus: $syllabus, iconUrl: $iconUrl, isArchivedByAdm: $isArchivedByAdm, isArchivedByCoord: $isArchivedByCoord, isDeleted: $isDeleted,isActive: $isActive, moduleOrder: $moduleOrder, collegiate: $collegiate)';
   }
 
   @override
@@ -115,7 +115,7 @@ class CourseModel extends FirestoreModel {
     if (identical(this, other)) return true;
 
     return other is CourseModel &&
-        other.userId == userId &&
+        other.coordinatorUserId == coordinatorUserId &&
         other.title == title &&
         other.description == description &&
         other.syllabus == syllabus &&
@@ -130,7 +130,7 @@ class CourseModel extends FirestoreModel {
 
   @override
   int get hashCode {
-    return userId.hashCode ^
+    return coordinatorUserId.hashCode ^
         title.hashCode ^
         description.hashCode ^
         syllabus.hashCode ^

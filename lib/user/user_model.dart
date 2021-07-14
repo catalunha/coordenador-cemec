@@ -1,6 +1,7 @@
 import 'dart:convert';
 
 import 'package:coordenador/firestore/firestore_model.dart';
+import 'package:flutter/foundation.dart';
 
 class UserModel extends FirestoreModel {
   static final String collection = 'users';
@@ -9,14 +10,16 @@ class UserModel extends FirestoreModel {
   final String? phoneNumber;
   final String? photoURL;
   final bool isActive;
+  final List<String> appList; //teacher,coordinator,administrator,student
 
   UserModel(
     String id, {
-    this.displayName,
     required this.email,
+    required this.isActive,
+    this.displayName,
     this.phoneNumber,
     this.photoURL,
-    required this.isActive,
+    required this.appList,
   }) : super(id);
 
   UserModel copyWith({
@@ -25,6 +28,7 @@ class UserModel extends FirestoreModel {
     String? phoneNumber,
     String? photoURL,
     bool? isActive,
+    List<String>? appList,
   }) {
     return UserModel(
       id,
@@ -33,6 +37,7 @@ class UserModel extends FirestoreModel {
       phoneNumber: phoneNumber ?? this.phoneNumber,
       photoURL: photoURL ?? this.photoURL,
       isActive: isActive ?? this.isActive,
+      appList: appList ?? this.appList,
     );
   }
 
@@ -44,6 +49,7 @@ class UserModel extends FirestoreModel {
       phoneNumber: map['phoneNumber'],
       photoURL: map['photoURL'],
       isActive: map['isActive'],
+      appList: map['appList'] == null ? [] : List<String>.from(map['appList']),
     );
   }
 
@@ -57,6 +63,7 @@ class UserModel extends FirestoreModel {
       'phoneNumber': phoneNumber,
       'photoURL': photoURL,
       'isActive': isActive,
+      'appList': appList,
     };
   }
 
@@ -64,7 +71,7 @@ class UserModel extends FirestoreModel {
 
   @override
   String toString() {
-    return 'UserModel(displayName: $displayName, email: $email, phoneNumber: $phoneNumber, photoURL: $photoURL)';
+    return 'UserModel(displayName: $displayName, email: $email, phoneNumber: $phoneNumber, photoURL: $photoURL, isActive: $isActive, appList: $appList)';
   }
 
   @override
@@ -72,6 +79,7 @@ class UserModel extends FirestoreModel {
     if (identical(this, other)) return true;
 
     return other is UserModel &&
+        listEquals(other.appList, appList) &&
         other.isActive == isActive &&
         other.displayName == displayName &&
         other.email == email &&
@@ -82,6 +90,7 @@ class UserModel extends FirestoreModel {
   @override
   int get hashCode {
     return displayName.hashCode ^
+        appList.hashCode ^
         isActive.hashCode ^
         email.hashCode ^
         phoneNumber.hashCode ^
