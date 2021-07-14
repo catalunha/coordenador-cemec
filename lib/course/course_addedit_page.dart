@@ -69,24 +69,28 @@ class _CourseAddEditPageState extends State<CourseAddEditPage> {
                 InputFileConnector(
                   label: 'Informe o ícone do curso',
                 ),
-                InputCheckBox(
-                  title: 'Arquivar este curso',
-                  subtitle: 'Arquivar este curso',
-                  value: formController.courseModel.isArchivedByCoord,
-                  onChanged: (value) {
-                    formController.onChange(isArchivedByCoord: value);
-                    setState(() {});
-                  },
-                ),
-                InputCheckBoxDelete(
-                  title: 'Apagar este curso',
-                  subtitle: 'Remover permanentemente',
-                  value: formController.courseModel.isDeleted,
-                  onChanged: (value) {
-                    formController.onChange(isDeleted: value);
-                    setState(() {});
-                  },
-                ),
+                formController.courseModel.id.isEmpty
+                    ? Container()
+                    : InputCheckBox(
+                        title: 'Arquivar este curso',
+                        subtitle: 'Arquivar este curso',
+                        value: formController.courseModel.isArchivedByCoord,
+                        onChanged: (value) {
+                          formController.onChange(isArchivedByCoord: value);
+                          setState(() {});
+                        },
+                      ),
+                formController.courseModel.id.isEmpty
+                    ? Container()
+                    : InputCheckBoxDelete(
+                        title: 'Apagar este curso',
+                        subtitle: 'Remover permanentemente',
+                        value: formController.courseModel.isDeleted,
+                        onChanged: (value) {
+                          formController.onChange(isDeleted: value);
+                          setState(() {});
+                        },
+                      ),
                 SizedBox(
                   height: 100,
                 )

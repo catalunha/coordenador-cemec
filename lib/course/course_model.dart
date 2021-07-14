@@ -92,7 +92,8 @@ class CourseModel extends FirestoreModel {
       isDeleted: map['isDeleted'] ?? false,
       isActive: map['isActive'] ?? true,
       iconUrl: map['iconUrl'],
-      collegiate: map['collegiate'],
+      collegiate:
+          map['collegiate'] == null ? [] : List<String>.from(map['collegiate']),
       moduleOrder: map['moduleOrder'] == null
           ? []
           : List<String>.from(map['moduleOrder']),

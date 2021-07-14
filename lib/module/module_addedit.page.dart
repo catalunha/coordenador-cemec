@@ -66,15 +66,17 @@ class _ModuleAddEditPageState extends State<ModuleAddEditPage> {
                 TeacherSearchConnector(
                   label: 'Selecionar um professor',
                 ),
-                InputCheckBoxDelete(
-                  title: 'Apagar este modulo',
-                  subtitle: 'Remover permanentemente',
-                  value: formController.moduleModel.isDeleted,
-                  onChanged: (value) {
-                    formController.onChange(isDeleted: value);
-                    setState(() {});
-                  },
-                ),
+                formController.moduleModel.id.isEmpty
+                    ? Container()
+                    : InputCheckBoxDelete(
+                        title: 'Apagar este modulo',
+                        subtitle: 'Remover permanentemente',
+                        value: formController.moduleModel.isDeleted,
+                        onChanged: (value) {
+                          formController.onChange(isDeleted: value);
+                          setState(() {});
+                        },
+                      ),
               ],
             )),
       ),

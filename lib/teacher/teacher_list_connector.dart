@@ -27,11 +27,24 @@ class TeacherListFactory extends VmFactory<AppState, TeacherListConnector> {
   TeacherListFactory(widget) : super(widget);
   @override
   TeacherListViewModel fromStore() => TeacherListViewModel(
-        teacherList: state.teacherState.teacherList ?? [],
+        teacherList: teacherList(),
         onSelect: (String id) {
           dispatch(SetTeacherCurrentTeacherAction(id: id));
         },
       );
+
+  List<UserModel> teacherList() {
+    print('collegiate ${state.courseState.courseModelCurrent?.collegiate}');
+    List<UserModel> teacherThisCourse = [];
+    for (UserModel teacher in state.teacherState.teacherList!) {
+      if (state.courseState.courseModelCurrent!.collegiate!
+          .contains(teacher.id)) {
+        teacherThisCourse.add(teacher);
+      }
+    }
+    return teacherThisCourse;
+    // return state.teacherState.teacherList ?? [];
+  }
 }
 
 class TeacherListViewModel extends Vm {
