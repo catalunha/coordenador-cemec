@@ -1,6 +1,7 @@
 import 'package:coordenador/module/module_addedit_connector.dart';
 import 'package:coordenador/module/module_model.dart';
 import 'package:coordenador/teacher/teacher_search_connector.dart';
+import 'package:coordenador/theme/app_icon.dart';
 import 'package:coordenador/widget/input_checkboxDelete.dart';
 import 'package:coordenador/widget/input_description.dart';
 import 'package:coordenador/widget/input_title.dart';
@@ -81,7 +82,7 @@ class _ModuleAddEditPageState extends State<ModuleAddEditPage> {
             )),
       ),
       floatingActionButton: FloatingActionButton(
-        child: Icon(Icons.cloud_upload_outlined),
+        child: Icon(AppIconData.saveInCloud),
         onPressed: () {
           formController.onCkechValidation();
           if (formController.isFormValid) {

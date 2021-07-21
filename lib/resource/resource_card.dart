@@ -1,4 +1,5 @@
 import 'package:coordenador/resource/resource_model.dart';
+import 'package:coordenador/theme/app_icon.dart';
 import 'package:flutter/material.dart';
 import 'package:url_launcher/url_launcher.dart';
 
@@ -20,8 +21,8 @@ class ResourceCard extends StatelessWidget {
         children: [
           ListTile(
             leading: resourceModel.url != null && resourceModel.url!.isNotEmpty
-                ? Icon(Icons.link)
-                : Icon(Icons.link_off),
+                ? Icon(AppIconData.linkOn)
+                : Icon(AppIconData.linkOff),
             title: Text('${resourceModel.title}'),
             subtitle: Text('${resourceModel.description}'),
             onTap: resourceModel.url != null && resourceModel.url!.isNotEmpty

@@ -1,6 +1,7 @@
 import 'package:coordenador/course/course_model.dart';
 import 'package:coordenador/module/module_card_connector.dart';
 import 'package:coordenador/module/module_model.dart';
+import 'package:coordenador/theme/app_icon.dart';
 import 'package:flutter/material.dart';
 
 class ModulePage extends StatefulWidget {
@@ -39,7 +40,7 @@ class _ModulePageState extends State<ModulePage> {
                 children: [
                   ListTile(
                     leading: widget.courseModel.iconUrl == null
-                        ? Icon(Icons.favorite_outline_rounded)
+                        ? Icon(AppIconData.undefined)
                         : Container(
                             height: 48,
                             width: 48,
@@ -78,7 +79,7 @@ class _ModulePageState extends State<ModulePage> {
         ],
       ),
       floatingActionButton: FloatingActionButton(
-        child: Icon(Icons.add),
+        child: Icon(AppIconData.addInCloud),
         onPressed: () async {
           Navigator.pushNamed(context, '/module_addedit', arguments: '');
         },

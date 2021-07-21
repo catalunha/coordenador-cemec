@@ -1,6 +1,7 @@
 import 'package:coordenador/course/course_card.dart';
 import 'package:coordenador/course/course_model.dart';
 import 'package:coordenador/theme/app_colors.dart';
+import 'package:coordenador/theme/app_icon.dart';
 import 'package:coordenador/theme/app_text_styles.dart';
 import 'package:flutter/material.dart';
 
@@ -75,11 +76,12 @@ class HomePage extends StatelessWidget {
               child: Wrap(
                 children: [
                   IconButton(
+                      tooltip: 'Ir para cursos arquivados',
                       onPressed: () => Navigator.pushNamed(
                             context,
                             '/course_archived',
                           ),
-                      icon: Icon(Icons.archive))
+                      icon: Icon(AppIconData.archived))
                 ],
               ),
             ),
@@ -97,7 +99,7 @@ class HomePage extends StatelessWidget {
         ],
       ),
       floatingActionButton: FloatingActionButton(
-        child: Icon(Icons.add),
+        child: Icon(AppIconData.addInCloud),
         onPressed: () async {
           Navigator.pushNamed(context, '/course_addedit', arguments: '');
         },

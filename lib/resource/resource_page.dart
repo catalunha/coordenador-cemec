@@ -2,6 +2,7 @@ import 'package:coordenador/course/course_model.dart';
 import 'package:coordenador/module/module_model.dart';
 import 'package:coordenador/resource/resource_card.dart';
 import 'package:coordenador/resource/resource_model.dart';
+import 'package:coordenador/theme/app_icon.dart';
 import 'package:coordenador/theme/app_text_styles.dart';
 import 'package:coordenador/user/user_model.dart';
 import 'package:flutter/material.dart';
@@ -39,7 +40,7 @@ class ResourcePage extends StatelessWidget {
                 children: [
                   ListTile(
                     leading: courseModel.iconUrl == null
-                        ? Icon(Icons.favorite_outline_rounded)
+                        ? Icon(AppIconData.undefined)
                         : Container(
                             height: 48,
                             width: 48,
@@ -77,7 +78,7 @@ class ResourcePage extends StatelessWidget {
                           leading: teacher == null ||
                                   teacher!.photoURL == null ||
                                   teacher!.photoURL!.isEmpty
-                              ? Icon(Icons.favorite_outline_rounded)
+                              ? Icon(AppIconData.undefined)
                               : Container(
                                   height: 48,
                                   width: 48,

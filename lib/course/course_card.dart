@@ -1,4 +1,5 @@
 import 'package:coordenador/course/course_model.dart';
+import 'package:coordenador/theme/app_icon.dart';
 import 'package:coordenador/theme/app_text_styles.dart';
 import 'package:flutter/material.dart';
 
@@ -16,7 +17,7 @@ class CourseCard extends StatelessWidget {
         children: [
           ListTile(
             leading: courseModel.iconUrl == null
-                ? Icon(Icons.favorite_outline_rounded)
+                ? Icon(AppIconData.undefined)
                 : Container(
                     height: 48,
                     width: 48,
@@ -98,14 +99,16 @@ class CourseCard extends StatelessWidget {
           Wrap(
             children: [
               IconButton(
-                icon: Icon(Icons.edit),
+                tooltip: 'Editar este curso',
+                icon: Icon(AppIconData.edit),
                 onPressed: () async {
                   Navigator.pushNamed(context, '/course_addedit',
                       arguments: courseModel.id);
                 },
               ),
               IconButton(
-                icon: Icon(Icons.post_add_outlined),
+                tooltip: 'Ver os môdulos deste curso',
+                icon: Icon(AppIconData.module),
                 onPressed: () async {
                   Navigator.pushNamed(context, '/module',
                       arguments: courseModel.id);

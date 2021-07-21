@@ -1,9 +1,12 @@
 import 'package:coordenador/theme/app_colors.dart';
+import 'package:coordenador/theme/app_icon.dart';
 import 'package:flutter/material.dart';
 
 class InputCheckBox extends StatelessWidget {
   final String title;
   final String subtitle;
+  final IconData icon;
+
   final bool? value;
   final void Function(bool?) onChanged;
 
@@ -12,7 +15,8 @@ class InputCheckBox extends StatelessWidget {
       required this.title,
       required this.onChanged,
       this.value,
-      required this.subtitle})
+      required this.subtitle,
+      this.icon = AppIconData.archived})
       : super(key: key);
 
   @override
@@ -31,7 +35,7 @@ class InputCheckBox extends StatelessWidget {
             Padding(
               padding: const EdgeInsets.symmetric(horizontal: 8),
               child: Icon(
-                Icons.check,
+                icon,
                 color: AppColors.primary,
               ),
             ),

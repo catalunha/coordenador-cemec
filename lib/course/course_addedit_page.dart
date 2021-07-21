@@ -1,5 +1,6 @@
 import 'package:coordenador/course/course_addedit_connector.dart';
 import 'package:coordenador/course/course_model.dart';
+import 'package:coordenador/theme/app_icon.dart';
 import 'package:coordenador/widget/input_checkbox.dart';
 import 'package:coordenador/widget/input_checkboxDelete.dart';
 import 'package:coordenador/widget/input_description.dart';
@@ -43,7 +44,6 @@ class _CourseAddEditPageState extends State<CourseAddEditPage> {
                   label: 'Título do curso',
                   initialValue: formController.courseModel.title,
                   validator: formController.validateRequiredText,
-                  // icon: Icons.text_format,
                   onChanged: (value) {
                     formController.onChange(title: value);
                   },
@@ -52,7 +52,6 @@ class _CourseAddEditPageState extends State<CourseAddEditPage> {
                   label: 'Descrição do curso',
                   initialValue: formController.courseModel.description,
                   validator: formController.validateRequiredText,
-                  // icon: Icons.text_snippet_outlined,
                   onChanged: (value) {
                     formController.onChange(description: value);
                   },
@@ -61,7 +60,6 @@ class _CourseAddEditPageState extends State<CourseAddEditPage> {
                   label: 'Ementa do curso',
                   initialValue: formController.courseModel.syllabus,
                   validator: formController.validateRequiredText,
-                  // icon: Icons.text_snippet_outlined,
                   onChanged: (value) {
                     formController.onChange(syllabus: value);
                   },
@@ -98,7 +96,7 @@ class _CourseAddEditPageState extends State<CourseAddEditPage> {
             )),
       ),
       floatingActionButton: FloatingActionButton(
-        child: Icon(Icons.cloud_upload_outlined),
+        child: Icon(AppIconData.saveInCloud),
         onPressed: () {
           formController.onCkechValidation();
           if (formController.isFormValid) {

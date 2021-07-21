@@ -38,7 +38,7 @@ dependencies:
   cloud_firestore: "^2.2.2"
   firebase_storage: ^9.0.0
   # font and icons
-  font_awesome_flutter: ^9.1.0
+  # font_awesome_flutter: ^9.1.0
   google_fonts: ^2.1.0
   # dart package
   intl: ^0.17.0

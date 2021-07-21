@@ -1,6 +1,5 @@
 class UserModel {
   static final String collection = 'users';
-  late final String uid;
   late final String displayName;
   late final String phoneNumber;
   late final String photoURL;
@@ -44,6 +43,22 @@ class ResourceModel {
   late final String title;
   late final String description;
   late final String url;
+  late final bool isDeleted; //for prof use
+}
+
+class Student {
+  static final String collection = 'students';
+
+  late final String userId;
+  late final String courseId;
+  late final bool isArchived; //for student use
+  // late final int porcentage; // como ?
+  late final Map<String, ResourceIdList>? moduleMap; //{moduleId:resourceLisId}
+
+}
+
+class ResourceIdList {
+  late List<String> resourceId;
 }
 
 class MensagemModel {
@@ -53,20 +68,4 @@ class MensagemModel {
   late final DateTime created;
   late final DateTime read;
   late final bool isRead;
-}
-
-class Student {
-  static final String collection = 'students';
-
-  late final String coordinatorUserId;
-  late final String courseId;
-  late final bool isBlocked; //for adm use
-  late final bool isArchived; //for student use
-  late final int porcentage;
-  late final Map<String, ResourceIdList>? moduleMap; //{moduleId:resourceLisId}
-
-}
-
-class ResourceIdList {
-  late List<String> resourceId;
 }

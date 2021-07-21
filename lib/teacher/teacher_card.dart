@@ -1,3 +1,4 @@
+import 'package:coordenador/theme/app_icon.dart';
 import 'package:coordenador/user/user_model.dart';
 import 'package:flutter/material.dart';
 
@@ -9,7 +10,7 @@ class TeacherCard extends StatelessWidget {
   Widget build(BuildContext context) {
     return ListTile(
       leading: teacher.photoURL == null
-          ? Icon(Icons.person_pin_outlined)
+          ? Icon(AppIconData.undefined)
           : Tooltip(
               message: 'id: ${teacher.id}',
               child: Container(
