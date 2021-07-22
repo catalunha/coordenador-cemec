@@ -1,4 +1,4 @@
-import 'package:coordenador/resource/resource_model.dart';
+import 'package:coordenador/resource/controller/resource_model.dart';
 import 'package:flutter/foundation.dart';
 
 class ResourceState {

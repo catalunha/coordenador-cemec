@@ -1,7 +1,7 @@
 import 'package:async_redux/async_redux.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:coordenador/app_state.dart';
-import 'package:coordenador/resource/resource_model.dart';
+import 'package:coordenador/resource/controller/resource_model.dart';
 
 class ReadDocsResourceAction extends ReduxAction<AppState> {
   @override

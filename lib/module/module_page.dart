@@ -1,6 +1,6 @@
-import 'package:coordenador/course/course_model.dart';
-import 'package:coordenador/module/module_card_connector.dart';
-import 'package:coordenador/module/module_model.dart';
+import 'package:coordenador/course/controller/course_model.dart';
+import 'package:coordenador/module/controller/module_card_connector.dart';
+import 'package:coordenador/module/controller/module_model.dart';
 import 'package:coordenador/theme/app_icon.dart';
 import 'package:flutter/material.dart';
 

@@ -1,5 +1,5 @@
 import 'package:coordenador/app_state.dart';
-import 'package:coordenador/login/login_action.dart';
+import 'package:coordenador/login/controller/login_action.dart';
 import 'package:coordenador/login/login_page.dart';
 import 'package:flutter/material.dart';
 import 'package:async_redux/async_redux.dart';

@@ -1,4 +1,4 @@
-import 'package:coordenador/resource/resource_model.dart';
+import 'package:coordenador/resource/controller/resource_model.dart';
 import 'package:coordenador/theme/app_icon.dart';
 import 'package:flutter/material.dart';
 import 'package:url_launcher/url_launcher.dart';

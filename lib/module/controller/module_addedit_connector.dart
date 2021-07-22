@@ -1,9 +1,9 @@
 import 'package:async_redux/async_redux.dart';
 import 'package:coordenador/app_state.dart';
-import 'package:coordenador/module/module_action.dart';
+import 'package:coordenador/module/controller/module_action.dart';
 import 'package:coordenador/module/module_addedit.page.dart';
-import 'package:coordenador/module/module_model.dart';
-import 'package:coordenador/teacher/teacher_action.dart';
+import 'package:coordenador/module/controller/module_model.dart';
+import 'package:coordenador/teacher/controller/teacher_action.dart';
 import 'package:flutter/material.dart';
 
 class ModuleAddEditConnector extends StatelessWidget {

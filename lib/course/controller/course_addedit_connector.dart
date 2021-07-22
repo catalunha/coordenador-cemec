@@ -1,11 +1,11 @@
 import 'package:async_redux/async_redux.dart';
 import 'package:coordenador/app_state.dart';
-import 'package:coordenador/course/course_action.dart';
+import 'package:coordenador/course/controller/course_action.dart';
 import 'package:coordenador/course/course_addedit_page.dart';
-import 'package:coordenador/upload/upload_action.dart';
+import 'package:coordenador/upload/controller/upload_action.dart';
 import 'package:flutter/cupertino.dart';
 
-import 'package:coordenador/course/course_model.dart';
+import 'package:coordenador/course/controller/course_model.dart';
 
 class CourseAddEditConnector extends StatelessWidget {
   final String addOrEditId;

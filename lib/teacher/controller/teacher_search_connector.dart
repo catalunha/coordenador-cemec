@@ -1,8 +1,8 @@
 import 'package:async_redux/async_redux.dart';
 import 'package:coordenador/app_state.dart';
-import 'package:coordenador/teacher/teacher_action.dart';
+import 'package:coordenador/teacher/controller/teacher_action.dart';
 import 'package:coordenador/teacher/teacher_search.dart';
-import 'package:coordenador/user/user_model.dart';
+import 'package:coordenador/user/controller/user_model.dart';
 import 'package:flutter/material.dart';
 
 class TeacherSearchConnector extends StatelessWidget {

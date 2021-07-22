@@ -4,7 +4,7 @@ import 'dart:typed_data';
 import 'package:flutter/foundation.dart' show kIsWeb;
 
 import 'package:coordenador/app_state.dart';
-import 'package:coordenador/upload/upload_state.dart';
+import 'package:coordenador/upload/controller/upload_state.dart';
 import 'package:firebase_storage/firebase_storage.dart';
 import 'package:path/path.dart';
 

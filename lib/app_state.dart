@@ -1,11 +1,11 @@
 import 'package:async_redux/async_redux.dart';
-import 'package:coordenador/course/course_state.dart';
-import 'package:coordenador/login/login_state.dart';
-import 'package:coordenador/module/module_state.dart';
-import 'package:coordenador/resource/resource_state.dart';
-import 'package:coordenador/upload/upload_state.dart';
-import 'package:coordenador/teacher/teacher_state.dart';
-import 'package:coordenador/user/user_state.dart';
+import 'package:coordenador/course/controller/course_state.dart';
+import 'package:coordenador/login/controller/login_state.dart';
+import 'package:coordenador/module/controller/module_state.dart';
+import 'package:coordenador/resource/controller/resource_state.dart';
+import 'package:coordenador/upload/controller/upload_state.dart';
+import 'package:coordenador/teacher/controller/teacher_state.dart';
+import 'package:coordenador/user/controller/user_state.dart';
 
 class AppState {
   final Wait wait;

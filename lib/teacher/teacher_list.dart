@@ -1,5 +1,5 @@
 import 'package:coordenador/teacher/teacher_card.dart';
-import 'package:coordenador/user/user_model.dart';
+import 'package:coordenador/user/controller/user_model.dart';
 import 'package:flutter/material.dart';
 
 class TeacherList extends StatelessWidget {

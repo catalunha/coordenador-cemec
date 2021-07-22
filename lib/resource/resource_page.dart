@@ -1,10 +1,10 @@
-import 'package:coordenador/course/course_model.dart';
-import 'package:coordenador/module/module_model.dart';
+import 'package:coordenador/course/controller/course_model.dart';
+import 'package:coordenador/module/controller/module_model.dart';
 import 'package:coordenador/resource/resource_card.dart';
-import 'package:coordenador/resource/resource_model.dart';
+import 'package:coordenador/resource/controller/resource_model.dart';
 import 'package:coordenador/theme/app_icon.dart';
 import 'package:coordenador/theme/app_text_styles.dart';
-import 'package:coordenador/user/user_model.dart';
+import 'package:coordenador/user/controller/user_model.dart';
 import 'package:flutter/material.dart';
 
 class ResourcePage extends StatelessWidget {

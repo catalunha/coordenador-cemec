@@ -1,10 +1,10 @@
-import 'package:coordenador/course/course_addedit_connector.dart';
-import 'package:coordenador/course/course_model.dart';
+import 'package:coordenador/course/controller/course_addedit_connector.dart';
+import 'package:coordenador/course/controller/course_model.dart';
 import 'package:coordenador/theme/app_icon.dart';
 import 'package:coordenador/widget/input_checkbox.dart';
 import 'package:coordenador/widget/input_checkboxDelete.dart';
 import 'package:coordenador/widget/input_description.dart';
-import 'package:coordenador/widget/input_file_connector.dart';
+import 'package:coordenador/upload/controller/input_file_connector.dart';
 import 'package:coordenador/widget/input_title.dart';
 import 'package:flutter/material.dart';
 

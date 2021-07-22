@@ -1,10 +1,10 @@
 import 'package:async_redux/async_redux.dart';
 import 'package:coordenador/app_state.dart';
-import 'package:coordenador/course/course_action.dart';
-import 'package:coordenador/course/course_model.dart';
-import 'package:coordenador/course/course_state.dart';
+import 'package:coordenador/course/controller/course_action.dart';
+import 'package:coordenador/course/controller/course_model.dart';
+import 'package:coordenador/course/controller/course_state.dart';
 import 'package:coordenador/home/home_page.dart';
-import 'package:coordenador/login/login_action.dart';
+import 'package:coordenador/login/controller/login_action.dart';
 
 import 'package:flutter/material.dart';
 

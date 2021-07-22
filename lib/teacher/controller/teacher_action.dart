@@ -1,7 +1,7 @@
 import 'package:async_redux/async_redux.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:coordenador/app_state.dart';
-import 'package:coordenador/user/user_model.dart';
+import 'package:coordenador/user/controller/user_model.dart';
 import 'package:collection/collection.dart';
 
 class ReadDocsTeacherAction extends ReduxAction<AppState> {

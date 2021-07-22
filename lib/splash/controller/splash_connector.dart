@@ -1,11 +1,11 @@
 import 'package:async_redux/async_redux.dart';
 import 'package:coordenador/app_state.dart';
-import 'package:coordenador/home/home_page_connector.dart';
-import 'package:coordenador/login/login_action.dart';
-import 'package:coordenador/login/login_connector.dart';
-import 'package:coordenador/login/login_state.dart';
+import 'package:coordenador/home/controller/home_page_connector.dart';
+import 'package:coordenador/login/controller/login_action.dart';
+import 'package:coordenador/login/controller/login_connector.dart';
+import 'package:coordenador/login/controller/login_state.dart';
 import 'package:coordenador/splash/splash_page.dart';
-import 'package:coordenador/user/user_state.dart';
+import 'package:coordenador/user/controller/user_state.dart';
 import 'package:flutter/material.dart';
 
 class SplashConnector extends StatelessWidget {

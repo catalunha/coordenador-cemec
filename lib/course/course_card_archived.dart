@@ -1,4 +1,4 @@
-import 'package:coordenador/course/course_model.dart';
+import 'package:coordenador/course/controller/course_model.dart';
 import 'package:coordenador/theme/app_icon.dart';
 import 'package:flutter/material.dart';
 

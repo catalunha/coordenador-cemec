@@ -1,8 +1,8 @@
 import 'package:async_redux/async_redux.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:coordenador/app_state.dart';
-import 'package:coordenador/course/course_action.dart';
-import 'package:coordenador/module/module_model.dart';
+import 'package:coordenador/course/controller/course_action.dart';
+import 'package:coordenador/module/controller/module_model.dart';
 
 class ReadDocsModuleAction extends ReduxAction<AppState> {
   @override

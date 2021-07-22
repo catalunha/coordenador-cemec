@@ -1,9 +1,9 @@
 import 'package:async_redux/async_redux.dart';
 import 'package:coordenador/app_state.dart';
 import 'package:coordenador/module/module_card.dart';
-import 'package:coordenador/module/module_model.dart';
-import 'package:coordenador/teacher/teacher_state.dart';
-import 'package:coordenador/user/user_model.dart';
+import 'package:coordenador/module/controller/module_model.dart';
+import 'package:coordenador/teacher/controller/teacher_state.dart';
+import 'package:coordenador/user/controller/user_model.dart';
 import 'package:flutter/material.dart';
 
 class ModuleCardConnector extends StatelessWidget {

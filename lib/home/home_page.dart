@@ -1,5 +1,5 @@
 import 'package:coordenador/course/course_card.dart';
-import 'package:coordenador/course/course_model.dart';
+import 'package:coordenador/course/controller/course_model.dart';
 import 'package:coordenador/theme/app_colors.dart';
 import 'package:coordenador/theme/app_icon.dart';
 import 'package:coordenador/theme/app_text_styles.dart';

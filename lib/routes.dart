@@ -1,12 +1,12 @@
-import 'package:coordenador/course/course_addedit_connector.dart';
-import 'package:coordenador/course/course_archived_connector.dart';
-import 'package:coordenador/module/module_addedit_connector.dart';
-import 'package:coordenador/module/module_connector.dart';
-import 'package:coordenador/resource/resource_connector.dart';
+import 'package:coordenador/course/controller/course_addedit_connector.dart';
+import 'package:coordenador/course/controller/course_archived_connector.dart';
+import 'package:coordenador/module/controller/module_addedit_connector.dart';
+import 'package:coordenador/module/controller/module_connector.dart';
+import 'package:coordenador/resource/controller/resource_connector.dart';
 import 'package:flutter/material.dart';
-import 'package:coordenador/home/home_page_connector.dart';
-import 'package:coordenador/login/login_connector.dart';
-import 'package:coordenador/splash/splash_connector.dart';
+import 'package:coordenador/home/controller/home_page_connector.dart';
+import 'package:coordenador/login/controller/login_connector.dart';
+import 'package:coordenador/splash/controller/splash_connector.dart';
 
 class Routes {
   static final routes = {

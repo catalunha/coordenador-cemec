@@ -1,4 +1,4 @@
-import 'package:coordenador/user/user_model.dart';
+import 'package:coordenador/user/controller/user_model.dart';
 
 enum StatusFirestoreUser {
   unInitialized,

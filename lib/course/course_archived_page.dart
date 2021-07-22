@@ -1,5 +1,5 @@
 import 'package:coordenador/course/course_card_archived.dart';
-import 'package:coordenador/course/course_model.dart';
+import 'package:coordenador/course/controller/course_model.dart';
 import 'package:flutter/material.dart';
 
 class CourseArchivedPage extends StatelessWidget {

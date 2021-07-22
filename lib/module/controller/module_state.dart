@@ -1,4 +1,4 @@
-import 'package:coordenador/module/module_model.dart';
+import 'package:coordenador/module/controller/module_model.dart';
 import 'package:flutter/foundation.dart';
 
 class ModuleState {
