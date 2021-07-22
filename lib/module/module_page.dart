@@ -1,4 +1,5 @@
 import 'package:coordenador/course/controller/course_model.dart';
+import 'package:coordenador/course/course_tile.dart';
 import 'package:coordenador/module/controller/module_card_connector.dart';
 import 'package:coordenador/module/controller/module_model.dart';
 import 'package:coordenador/theme/app_icon.dart';
@@ -36,28 +37,31 @@ class _ModulePageState extends State<ModulePage> {
                   borderRadius: BorderRadius.circular(15)),
               elevation: 10,
               color: Colors.lightBlue,
-              child: Column(
-                children: [
-                  ListTile(
-                    leading: widget.courseModel.iconUrl == null
-                        ? Icon(AppIconData.undefined)
-                        : Container(
-                            height: 48,
-                            width: 48,
-                            decoration: BoxDecoration(
-                              borderRadius: BorderRadius.circular(5),
-                              image: DecorationImage(
-                                image:
-                                    NetworkImage(widget.courseModel.iconUrl!),
-                              ),
-                            ),
-                          ),
-                    title: Text(widget.courseModel.title),
-                    subtitle: Text(
-                        'Com ${widget.courseModel.moduleOrder!.length} môdulos.'),
-                  ),
-                ],
+              child: CourseTile(
+                courseModel: widget.courseModel,
               ),
+              // child: Column(
+              //   children: [
+              //     ListTile(
+              //       leading: widget.courseModel.iconUrl == null
+              //           ? Icon(AppIconData.undefined)
+              //           : Container(
+              //               height: 48,
+              //               width: 48,
+              //               decoration: BoxDecoration(
+              //                 borderRadius: BorderRadius.circular(5),
+              //                 image: DecorationImage(
+              //                   image:
+              //                       NetworkImage(widget.courseModel.iconUrl!),
+              //                 ),
+              //               ),
+              //             ),
+              //       title: Text(widget.courseModel.title),
+              //       subtitle: Text(
+              //           'Com ${widget.courseModel.moduleOrder!.length} môdulos.'),
+              //     ),
+              //   ],
+              // ),
             ),
           ),
           Expanded(

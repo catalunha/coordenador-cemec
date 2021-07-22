@@ -1,8 +1,10 @@
 import 'package:coordenador/module/controller/module_model.dart';
 import 'package:coordenador/teacher/teacher_card.dart';
+import 'package:coordenador/teacher/teacher_tile.dart';
 import 'package:coordenador/theme/app_icon.dart';
 import 'package:coordenador/theme/app_text_styles.dart';
 import 'package:coordenador/user/controller/user_model.dart';
+import 'package:coordenador/widget/text_description.dart';
 import 'package:flutter/material.dart';
 
 class ModuleCard extends StatelessWidget {
@@ -30,58 +32,73 @@ class ModuleCard extends StatelessWidget {
                 Text('${moduleModel.title}', style: AppTextStyles.trailingBold),
             color: Colors.blue.shade50,
           ),
-          teacher != null
-              ? TeacherCard(teacher: teacher!)
-              : ListTile(
-                  leading: Icon(AppIconData.undefined),
-                ),
-          Padding(
-            padding: const EdgeInsets.only(left: 10),
-            child: Align(
-              alignment: Alignment.topLeft,
-              child: RichText(
-                text: TextSpan(
-                  style: DefaultTextStyle.of(context).style,
-                  children: [
-                    TextSpan(
-                        text: 'Descrição: ',
-                        style: AppTextStyles.captionBoldBody),
-                    TextSpan(
-                      text: '${moduleModel.description}',
-                    )
-                  ],
-                ),
-              ),
-            ),
+          TeacherTile(
+            teacher: teacher,
           ),
-          Padding(
-            padding: const EdgeInsets.only(left: 10),
-            child: Align(
-              alignment: Alignment.topLeft,
-              child: RichText(
-                text: TextSpan(
-                  style: DefaultTextStyle.of(context).style,
-                  children: [
-                    TextSpan(
-                        text: 'Ementa: ', style: AppTextStyles.captionBoldBody),
-                    TextSpan(
-                      text: '${moduleModel.syllabus}',
-                    )
-                  ],
-                ),
-              ),
-            ),
+          // teacher != null
+          //     ? TeacherCard(teacher: teacher!)
+          //     : ListTile(
+          //         leading: Icon(AppIconData.undefined),
+          //       ),
+          TextDescription(
+            firstWord: 'Descrição: ',
+            text: moduleModel.description,
           ),
-          Padding(
-            padding: const EdgeInsets.only(left: 10),
-            child: Align(
-              alignment: Alignment.topLeft,
-              child: Text(
-                '${moduleModel.id}',
-                // textAlign: TextAlign.start,
-              ),
-            ),
+          TextDescription(
+            firstWord: 'Ementa: ',
+            text: moduleModel.description,
           ),
+          TextDescription(
+            firstWord: 'moduleId: ',
+            text: moduleModel.id,
+          ),
+          // Padding(
+          //   padding: const EdgeInsets.only(left: 10),
+          //   child: Align(
+          //     alignment: Alignment.topLeft,
+          //     child: RichText(
+          //       text: TextSpan(
+          //         style: DefaultTextStyle.of(context).style,
+          //         children: [
+          //           TextSpan(
+          //               text: 'Descrição: ',
+          //               style: AppTextStyles.captionBoldBody),
+          //           TextSpan(
+          //             text: '${moduleModel.description}',
+          //           )
+          //         ],
+          //       ),
+          //     ),
+          //   ),
+          // ),
+          // Padding(
+          //   padding: const EdgeInsets.only(left: 10),
+          //   child: Align(
+          //     alignment: Alignment.topLeft,
+          //     child: RichText(
+          //       text: TextSpan(
+          //         style: DefaultTextStyle.of(context).style,
+          //         children: [
+          //           TextSpan(
+          //               text: 'Ementa: ', style: AppTextStyles.captionBoldBody),
+          //           TextSpan(
+          //             text: '${moduleModel.syllabus}',
+          //           )
+          //         ],
+          //       ),
+          //     ),
+          //   ),
+          // ),
+          // Padding(
+          //   padding: const EdgeInsets.only(left: 10),
+          //   child: Align(
+          //     alignment: Alignment.topLeft,
+          //     child: Text(
+          //       '${moduleModel.id}',
+          //       // textAlign: TextAlign.start,
+          //     ),
+          //   ),
+          // ),
           Wrap(
             children: [
               IconButton(

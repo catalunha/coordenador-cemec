@@ -1,6 +1,7 @@
 import 'package:coordenador/course/controller/course_model.dart';
+import 'package:coordenador/course/course_tile.dart';
 import 'package:coordenador/theme/app_icon.dart';
-import 'package:coordenador/theme/app_text_styles.dart';
+import 'package:coordenador/widget/text_description.dart';
 import 'package:flutter/material.dart';
 
 class CourseCard extends StatelessWidget {
@@ -15,87 +16,106 @@ class CourseCard extends StatelessWidget {
         mainAxisSize: MainAxisSize.min,
         mainAxisAlignment: MainAxisAlignment.start,
         children: [
-          ListTile(
-            leading: courseModel.iconUrl == null
-                ? Icon(AppIconData.undefined)
-                : Container(
-                    height: 48,
-                    width: 48,
-                    decoration: BoxDecoration(
-                      borderRadius: BorderRadius.circular(5),
-                      image: DecorationImage(
-                        image: NetworkImage(courseModel.iconUrl!),
-                      ),
-                    ),
-                  ),
-            title: Text('${courseModel.title}',
-                style: AppTextStyles.titleBoldHeading),
+          CourseTile(
+            courseModel: courseModel,
           ),
-          Padding(
-            padding: const EdgeInsets.only(left: 10),
-            child: Align(
-              alignment: Alignment.topLeft,
-              child: RichText(
-                text: TextSpan(
-                  style: DefaultTextStyle.of(context).style,
-                  children: [
-                    TextSpan(
-                        text: 'Descrição: ',
-                        style: AppTextStyles.captionBoldBody),
-                    TextSpan(
-                      text: '${courseModel.description}',
-                    )
-                  ],
-                ),
-              ),
-            ),
+          // ListTile(
+          //   leading: courseModel.iconUrl == null
+          //       ? Icon(AppIconData.undefined)
+          //       : Container(
+          //           height: 48,
+          //           width: 48,
+          //           decoration: BoxDecoration(
+          //             borderRadius: BorderRadius.circular(5),
+          //             image: DecorationImage(
+          //               image: NetworkImage(courseModel.iconUrl!),
+          //             ),
+          //           ),
+          //         ),
+          //   title: Text('${courseModel.title}',
+          //       style: AppTextStyles.titleBoldHeading),
+          // ),
+          TextDescription(
+            firstWord: 'Descrição: ',
+            text: courseModel.description,
           ),
-          Padding(
-            padding: const EdgeInsets.only(left: 10),
-            child: Align(
-              alignment: Alignment.topLeft,
-              child: RichText(
-                text: TextSpan(
-                  style: DefaultTextStyle.of(context).style,
-                  children: [
-                    TextSpan(
-                        text: 'Ementa: ', style: AppTextStyles.captionBoldBody),
-                    TextSpan(
-                      text: '${courseModel.syllabus}',
-                    )
-                  ],
-                ),
-              ),
-            ),
+          TextDescription(
+            firstWord: 'Ementa: ',
+            text: courseModel.syllabus,
           ),
-          Padding(
-            padding: const EdgeInsets.only(left: 10),
-            child: Align(
-              alignment: Alignment.topLeft,
-              child: RichText(
-                text: TextSpan(
-                  style: DefaultTextStyle.of(context).style,
-                  children: [
-                    TextSpan(
-                        text: 'Môdulos: ',
-                        style: AppTextStyles.captionBoldBody),
-                    TextSpan(
-                      text: '${courseModel.moduleOrder?.length}',
-                    )
-                  ],
-                ),
-              ),
-            ),
+          TextDescription(
+            firstWord: 'Môdulos: ',
+            text: '${courseModel.moduleOrder?.length}',
           ),
-          Padding(
-            padding: const EdgeInsets.only(left: 10),
-            child: Align(
-              alignment: Alignment.topLeft,
-              child: Text(
-                '${courseModel.id}',
-              ),
-            ),
-          ),
+          // TextDescription(
+          //   firstWord: 'courseId: ',
+          //   text: courseModel.id,
+          // ),
+          // Padding(
+          //   padding: const EdgeInsets.only(left: 10),
+          //   child: Align(
+          //     alignment: Alignment.topLeft,
+          //     child: RichText(
+          //       text: TextSpan(
+          //         style: DefaultTextStyle.of(context).style,
+          //         children: [
+          //           TextSpan(
+          //               text: 'Descrição: ',
+          //               style: AppTextStyles.captionBoldBody),
+          //           TextSpan(
+          //             text: '${courseModel.description}',
+          //           )
+          //         ],
+          //       ),
+          //     ),
+          //   ),
+          // ),
+          // Padding(
+          //   padding: const EdgeInsets.only(left: 10),
+          //   child: Align(
+          //     alignment: Alignment.topLeft,
+          //     child: RichText(
+          //       text: TextSpan(
+          //         style: DefaultTextStyle.of(context).style,
+          //         children: [
+          //           TextSpan(
+          //               text: 'Ementa: ', style: AppTextStyles.captionBoldBody),
+          //           TextSpan(
+          //             text: '${courseModel.syllabus}',
+          //           )
+          //         ],
+          //       ),
+          //     ),
+          //   ),
+          // ),
+          // Padding(
+          //   padding: const EdgeInsets.only(left: 10),
+          //   child: Align(
+          //     alignment: Alignment.topLeft,
+          //     child: RichText(
+          //       text: TextSpan(
+          //         style: DefaultTextStyle.of(context).style,
+          //         children: [
+          //           TextSpan(
+          //               text: 'Môdulos: ',
+          //               style: AppTextStyles.captionBoldBody),
+          //           TextSpan(
+          //             text: '${courseModel.moduleOrder?.length}',
+          //           )
+          //         ],
+          //       ),
+          //     ),
+          //   ),
+          // ),
+          // Padding(
+          //   padding: const EdgeInsets.only(left: 10),
+          //   child: Align(
+          //     alignment: Alignment.topLeft,
+          //     child: Text(
+          //       '${courseModel.id}',
+          //     ),
+          //   ),
+          // ),
           Wrap(
             children: [
               IconButton(
