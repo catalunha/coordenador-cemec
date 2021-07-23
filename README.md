@@ -1,20 +1,5 @@
 # coordenador
 
-A new Flutter project.
-
-## Getting Started
-
-This project is a starting point for a Flutter application.
-
-A few resources to get you started if this is your first Flutter project:
-
-- [Lab: Write your first Flutter app](https://flutter.dev/docs/get-started/codelab)
-- [Cookbook: Useful Flutter samples](https://flutter.dev/docs/cookbook)
-
-For help getting started with Flutter, view our
-[online documentation](https://flutter.dev/docs), which offers tutorials,
-samples, guidance on mobile development, and a full API reference.
-
 
 <!-- The core Firebase JS SDK is always required and must be listed first -->
 <script src="/__/firebase/8.7.0/firebase-app.js"></script>
@@ -37,4 +22,6 @@ https://api.flutter.dev/flutter/material/ReorderableListView-class.html
 https://medium.com/flutterdevs/reorderable-listview-in-flutter-731324f0677b
 https://www.kindacode.com/article/working-with-reorderablelistview-in-flutter/
 https://developer.school/building-a-top-ten-list-using-reorderablelistview-to-reorder-list-items/
+
+bug:
 

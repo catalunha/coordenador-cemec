@@ -35,6 +35,7 @@ class TeacherTile extends StatelessWidget {
             //   ),
             title: Text(teacher!.displayName ?? ''),
             subtitle: Text('email: ${teacher!.email}\nuserId: ${teacher!.id}'),
+            trailing: Icon(AppIconData.teacher),
           )
         : ListTile(
             leading: Icon(

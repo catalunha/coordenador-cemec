@@ -71,6 +71,14 @@ class SetModuleModelListModuleAction extends ReduxAction<AppState> {
       ),
     );
   }
+
+  void after() {
+    if (state.moduleState.moduleModelCurrent != null) {
+      dispatch(SetModuleCurrentModuleAction(
+          id: state.moduleState.moduleModelCurrent!.id));
+    }
+    // dispatch(ReadDocCourseOfModuleListModuleAction());
+  }
 }
 
 class SetModuleCurrentModuleAction extends ReduxAction<AppState> {

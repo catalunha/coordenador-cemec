@@ -46,7 +46,7 @@ class ModuleCard extends StatelessWidget {
           ),
           TextDescription(
             firstWord: 'Ementa: ',
-            text: moduleModel.description,
+            text: moduleModel.syllabus,
           ),
           TextDescription(
             firstWord: 'moduleId: ',
