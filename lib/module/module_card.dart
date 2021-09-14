@@ -102,6 +102,7 @@ class ModuleCard extends StatelessWidget {
           Wrap(
             children: [
               IconButton(
+                tooltip: 'Editar este môdulo',
                 icon: Icon(AppIconData.edit),
                 onPressed: () async {
                   Navigator.pushNamed(context, '/module_addedit',
@@ -109,9 +110,18 @@ class ModuleCard extends StatelessWidget {
                 },
               ),
               IconButton(
+                tooltip: 'Ver recursos para este môdulo',
                 icon: Icon(AppIconData.resourse),
                 onPressed: () async {
                   Navigator.pushNamed(context, '/resource',
+                      arguments: moduleModel.id);
+                },
+              ),
+              IconButton(
+                tooltip: 'Ver situações para este môdulo',
+                icon: Icon(AppIconData.situation),
+                onPressed: () async {
+                  Navigator.pushNamed(context, '/situation',
                       arguments: moduleModel.id);
                 },
               ),

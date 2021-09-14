@@ -3,6 +3,8 @@ import 'package:coordenador/course/controller/course_archived_connector.dart';
 import 'package:coordenador/module/controller/module_addedit_connector.dart';
 import 'package:coordenador/module/controller/module_connector.dart';
 import 'package:coordenador/resource/controller/resource_connector.dart';
+import 'package:coordenador/resource/resouce_youtube.dart';
+import 'package:coordenador/situation/controller/situation_connector.dart';
 import 'package:flutter/material.dart';
 import 'package:coordenador/home/controller/home_page_connector.dart';
 import 'package:coordenador/login/controller/login_connector.dart';
@@ -12,6 +14,7 @@ class Routes {
   static final routes = {
     '/': (BuildContext context) => SplashConnector(),
     '/login': (BuildContext context) => LoginConnector(),
+    '/youtube': (BuildContext context) => ResouceYoutube(),
     '/home': (BuildContext context) => HomePageConnector(),
     '/course_addedit': (BuildContext context) => CourseAddEditConnector(
           addOrEditId: ModalRoute.of(context)!.settings.arguments.toString(),
@@ -24,6 +27,9 @@ class Routes {
           addOrEditId: ModalRoute.of(context)!.settings.arguments.toString(),
         ),
     '/resource': (BuildContext context) => ResourceConnector(
+          moduleId: ModalRoute.of(context)!.settings.arguments.toString(),
+        ),
+    '/situation': (BuildContext context) => SituationConnector(
           moduleId: ModalRoute.of(context)!.settings.arguments.toString(),
         ),
   };

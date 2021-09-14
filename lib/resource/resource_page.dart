@@ -36,76 +36,95 @@ class ResourcePage extends StatelessWidget {
             child: Card(
               shape: RoundedRectangleBorder(
                   borderRadius: BorderRadius.circular(15)),
-              color: Colors.lightBlue,
+              // color: AppColors.secondary,
               elevation: 10,
-              child: CourseTile(
-                courseModel: courseModel,
+              child: Column(
+                children: [
+                  CourseTile(
+                    courseModel: courseModel,
+                  ),
+                  TeacherTile(
+                    teacher: teacher,
+                  ),
+                ],
               ),
-              // child: Column(
-              //   children: [
-              //     ListTile(
-              //       leading: courseModel.iconUrl == null
-              //           ? Icon(AppIconData.undefined)
-              //           : Container(
-              //               height: 48,
-              //               width: 48,
-              //               decoration: BoxDecoration(
-              //                 borderRadius: BorderRadius.circular(5),
-              //                 image: DecorationImage(
-              //                   image: NetworkImage(courseModel.iconUrl!),
-              //                 ),
-              //               ),
-              //             ),
-              //       title: Text(
-              //         courseModel.title,
-              //         style: AppTextStyles.titleBoldHeading,
-              //       ),
-              //     ),
-              //   ],
-              // ),
             ),
           ),
-          Padding(
-            padding: const EdgeInsets.only(left: 8, top: 4, right: 8),
-            child: Card(
-              shape: RoundedRectangleBorder(
-                  borderRadius: BorderRadius.circular(15)),
-              elevation: 10,
-              color: Colors.lightBlueAccent,
-              child: TeacherTile(
-                teacher: teacher,
-              ),
-              // child: Column(
-              //   children: [
-              //     // Text(
-              //     //   moduleModel.title,
-              //     //   style: AppTextStyles.titleBoldHeading,
-              //     // ),
-              //     teacher != null
-              //         ? ListTile(
-              //             leading: teacher == null ||
-              //                     teacher!.photoURL == null ||
-              //                     teacher!.photoURL!.isEmpty
-              //                 ? Icon(AppIconData.undefined)
-              //                 : Container(
-              //                     height: 48,
-              //                     width: 48,
-              //                     decoration: BoxDecoration(
-              //                       borderRadius: BorderRadius.circular(5),
-              //                       image: DecorationImage(
-              //                         image: NetworkImage(teacher!.photoURL!),
-              //                       ),
-              //                     ),
-              //                   ),
-              //             title: Text('${teacher!.displayName}'),
-              //             subtitle: Text(
-              //                 'email: ${teacher!.email}\nMobile:${teacher!.phoneNumber}'),
-              //           )
-              //         : Container(),
-              //   ],
-              // ),
-            ),
-          ),
+          // Padding(
+          //   padding: const EdgeInsets.only(left: 16, top: 4, right: 16),
+          //   child: Card(
+          //     shape: RoundedRectangleBorder(
+          //         borderRadius: BorderRadius.circular(15)),
+          //     color: Colors.lightBlue,
+          //     elevation: 10,
+          //     child: CourseTile(
+          //       courseModel: courseModel,
+          //     ),
+          //     // child: Column(
+          //     //   children: [
+          //     //     ListTile(
+          //     //       leading: courseModel.iconUrl == null
+          //     //           ? Icon(AppIconData.undefined)
+          //     //           : Container(
+          //     //               height: 48,
+          //     //               width: 48,
+          //     //               decoration: BoxDecoration(
+          //     //                 borderRadius: BorderRadius.circular(5),
+          //     //                 image: DecorationImage(
+          //     //                   image: NetworkImage(courseModel.iconUrl!),
+          //     //                 ),
+          //     //               ),
+          //     //             ),
+          //     //       title: Text(
+          //     //         courseModel.title,
+          //     //         style: AppTextStyles.titleBoldHeading,
+          //     //       ),
+          //     //     ),
+          //     //   ],
+          //     // ),
+          //   ),
+          // ),
+          // Padding(
+          //   padding: const EdgeInsets.only(left: 8, top: 4, right: 8),
+          //   child: Card(
+          //     shape: RoundedRectangleBorder(
+          //         borderRadius: BorderRadius.circular(15)),
+          //     elevation: 10,
+          //     color: Colors.lightBlueAccent,
+          //     child: TeacherTile(
+          //       teacher: teacher,
+          //     ),
+          //     // child: Column(
+          //     //   children: [
+          //     //     // Text(
+          //     //     //   moduleModel.title,
+          //     //     //   style: AppTextStyles.titleBoldHeading,
+          //     //     // ),
+          //     //     teacher != null
+          //     //         ? ListTile(
+          //     //             leading: teacher == null ||
+          //     //                     teacher!.photoURL == null ||
+          //     //                     teacher!.photoURL!.isEmpty
+          //     //                 ? Icon(AppIconData.undefined)
+          //     //                 : Container(
+          //     //                     height: 48,
+          //     //                     width: 48,
+          //     //                     decoration: BoxDecoration(
+          //     //                       borderRadius: BorderRadius.circular(5),
+          //     //                       image: DecorationImage(
+          //     //                         image: NetworkImage(teacher!.photoURL!),
+          //     //                       ),
+          //     //                     ),
+          //     //                   ),
+          //     //             title: Text('${teacher!.displayName}'),
+          //     //             subtitle: Text(
+          //     //                 'email: ${teacher!.email}\nMobile:${teacher!.phoneNumber}'),
+          //     //           )
+          //     //         : Container(),
+          //     //   ],
+          //     // ),
+          //   ),
+          // ),
           Text(
             moduleModel.title,
             style: AppTextStyles.titleBoldHeading,

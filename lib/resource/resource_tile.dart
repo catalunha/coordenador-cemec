@@ -20,6 +20,16 @@ class ResourceTile extends StatelessWidget {
                 resourceModel?.url != null && resourceModel!.url!.isNotEmpty
                     ? Icon(AppIconData.linkOn)
                     : Icon(AppIconData.linkOff),
+            trailing: IconButton(
+              icon: Icon(Icons.ac_unit),
+              onPressed: () {
+                Navigator.pushNamed(
+                  context,
+                  '/youtube',
+                );
+                //   },
+              },
+            ),
             title: Text('${resourceModel!.title}'),
             subtitle: Text(
                 '${resourceModel!.description}\nresourceId: ${resourceModel!.id}'),

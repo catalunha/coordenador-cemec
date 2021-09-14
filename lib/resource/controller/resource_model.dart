@@ -8,6 +8,7 @@ class ResourceModel extends FirestoreModel {
   final String title;
   final String description;
   final String? url;
+
   ResourceModel(
     String id, {
     required this.moduleId,

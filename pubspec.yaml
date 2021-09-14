@@ -45,7 +45,7 @@ dependencies:
   # outros packages
   file_picker: ^3.0.3
   url_launcher: ^6.0.8
-
+  youtube_player_iframe: ^2.2.2
 
 
 dev_dependencies:
